@@ -109,7 +109,6 @@ h1,
 h2,
 h3,
 h4,
-h5,
 h6 {
     color: var(--color-text-dark);
     font-weight: 700;
@@ -398,7 +397,7 @@ a:hover {
 
 .hero {
     background: linear-gradient(135deg, #FAFAFF 0%, #F5F3FF 50%, #EDE9FE 100%);
-    padding: calc(var(--spacing-3xl) + 2rem) 0 var(--spacing-3xl);
+    padding: var(--spacing-3xl) 0;
     position: relative;
     overflow: hidden;
     min-height: 85vh;
@@ -1549,3 +1548,4 @@ html, body { overflow-x: clip; }
 /* Newsletter Success Toast */
 .newsletter-success-toast { position: fixed; top: 20px; right: 20px; background: linear-gradient(135deg, #10B981, #059669); color: white; padding: 1rem 1.5rem; border-radius: 0.75rem; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3); z-index: 10000; animation: slideInRight 0.3s ease-out; font-family: var(--font-family); }
 @keyframes slideInRight { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
