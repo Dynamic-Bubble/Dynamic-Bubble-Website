@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Get a complete marketing strategy for your startup from Dynamic Bubble.">
+<meta name="keywords" content="Dynamic Bubble, marketing strategy, startup marketing, growth strategy">
+<meta name="author" content="Dynamic Bubble">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Marketing Strategy | Dynamic Bubble">
+<meta property="og:description" content="Get a complete marketing strategy for your startup from Dynamic Bubble.">
+<title>Marketing Strategy | Dynamic Bubble</title>
+<link rel="icon" type="image/png" href="../assets/images/dynamic_bubble_logo.jpg">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="../css/styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<link rel="stylesheet" href="../css/card-nav.css">
+<link rel="stylesheet" href="../css/text-type.css">
+<link rel="stylesheet" href="../css/contact-input.css">
+<style>
+.ms-field{margin-bottom:1.5rem}
+.ms-label{display:block;font-weight:600;color:var(--color-text-dark);margin-bottom:.4rem;font-size:.95rem}
+.ms-label span{color:#e53e3e;margin-left:2px}
+.ms-helper{font-size:.82rem;color:var(--color-text-light);margin-top:.25rem}
+.ms-input,.ms-select,.ms-textarea{width:100%;padding:.75rem 1rem;border:1.5px solid #9e9e9e;border-radius:.75rem;font-size:1rem;font-family:var(--font-family);color:var(--color-text-dark);background:#fff;box-sizing:border-box;transition:border-color .2s}
+.ms-input:focus,.ms-select:focus,.ms-textarea:focus{outline:none;border-color:var(--color-primary)}
+.ms-textarea{min-height:90px;resize:vertical}
+.ms-cb-group{display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;margin-top:.4rem}
+.ms-cb-group label{display:flex;align-items:center;gap:.4rem;cursor:pointer;font-size:.95rem;color:var(--color-text-medium)}
+.ms-cb-group input[type=checkbox]{accent-color:var(--color-primary);width:16px;height:16px}
+.ms-err{color:red;font-size:.85rem;margin-top:4px;display:none}
+.ms-err.show{display:block}
+.ms-banner{background:linear-gradient(135deg,#10B981,#059669);color:#fff;padding:1.25rem 1.5rem;border-radius:1rem;margin-bottom:2rem;font-weight:600;font-size:1.05rem}
+.ms-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;border-radius:999px;background:#EDE9FE;color:#7C3AED;font-weight:700;font-size:.88rem;margin-bottom:1rem}
+.ms-step-label{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1.1rem;border-radius:999px;background:#EDE9FE;color:#7C3AED;font-weight:700;font-size:.88rem;margin-bottom:1.25rem}
+.ms-note{background:#F5F3FF;border-left:3px solid #7C3AED;padding:.85rem 1rem;border-radius:.5rem;font-size:.92rem;color:var(--color-text-medium);margin-bottom:2rem}
+#ms-payment-section{display:none}
+#ms-payment-section.show{display:block}
+.ms-divider{border:none;border-top:1px solid var(--color-border-light);margin:2.5rem 0}
+.ms-pay-note{background:#FFF7ED;border-left:3px solid #F59E0B;padding:.85rem 1rem;border-radius:.5rem;font-size:.92rem;color:var(--color-text-medium);margin-bottom:1.5rem}
+</style>
+</head>
+<body>
+<!-- Navigation -->
+<div class="card-nav-container">
+  <nav class="card-nav">
+    <div class="card-nav-top">
+      <div class="hamburger-menu" role="button" aria-label="Toggle menu" tabindex="0">
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+      </div>
+      <div class="logo-container">
+        <a href="../index.html">
+          <img src="../assets/images/dynamic_bubble_logo.jpg" alt="Dynamic Bubble" class="logo">
+        </a>
+      </div>
+      <a href="mailto:dynamicbubbleinfo@gmail.com" class="card-nav-cta-button">Email Us</a>
+    </div>
+    <div class="card-nav-content">
+      <div class="nav-card nav-card-explore">
+        <div class="nav-card-label">Explore</div>
+        <div class="nav-card-links">
+          <a class="nav-card-link" href="../index.html" aria-label="Home">
+            <svg class="nav-card-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+            Home
+          </a>
+          <a class="nav-card-link" href="about.html" aria-label="About Us">
+            <svg class="nav-card-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            About Us
+          </a>
+          <a class="nav-card-link" href="services.html" aria-label="Services">
+            <svg class="nav-card-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+            Services
+          </a>
+        </div>
+      </div>
+      <div class="nav-card nav-card-connect">
+        <div class="nav-card-label">Connect</div>
+        <div class="nav-card-links">
+
+          <a class="nav-card-link" href="mailto:dynamicbubbleinfo@gmail.com" aria-label="Email">
+            <svg class="nav-card-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            Email
+          </a>
+          <a class="nav-card-link" href="https://www.linkedin.com/company/dynamic-bubble/" target="_blank" aria-label="LinkedIn">
+            <svg class="nav-card-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<!-- Page Content -->
+<section class="section section-alt">
+  <div class="container-narrow">
+
+    <div class="section-header scroll-reveal" style="margin-bottom:1.5rem">
+      <div class="ms-badge">₹999</div>
+      <h1>Marketing Strategy for Startups</h1>
+      <p>Tell us about your startup so we can build your complete growth strategy.</p>
+    </div>
+
+    <div class="ms-note">
+      We will create a complete marketing strategy including suitable platforms/apps, online and offline marketing strategy, influencer marketing strategy, and a growth roadmap.
+    </div>
+
+    <!-- STEP 1: Questionnaire -->
+    <div id="ms-questionnaire-section">
+      <div class="ms-step-label">Step 1 — Tell us about your startup</div>
+      <form id="ms-form" novalidate>
+
+        <!-- 1. Startup Name -->
+        <div class="ms-field">
+          <label class="ms-label" for="ms-startup-name">Startup / Business Name <span>*</span></label>
+          <input class="ms-input" type="text" id="ms-startup-name" name="startup_name" maxlength="100" placeholder="Your startup name" required>
+          <div class="ms-err" id="e-startup-name">Please enter your startup or business name.</div>
+        </div>
+
+        <!-- 2. Industry -->
+        <div class="ms-field">
+          <label class="ms-label" for="ms-industry">Industry / Niche <span>*</span></label>
+          <input class="ms-input" type="text" id="ms-industry" name="industry" maxlength="100" placeholder="e.g. EdTech, FinTech, Food, Fashion" required>
+          <div class="ms-err" id="e-industry">Please enter your industry or niche.</div>
+        </div>
+
+        <!-- 3. Product/Service Details -->
+        <div class="ms-field">
+          <label class="ms-label" for="ms-product">Product / Service Details <span>*</span></label>
+          <textarea class="ms-textarea" id="ms-product" name="product_details" maxlength="400" rows="3" placeholder="What exactly are you offering?" required></textarea>
+          <div class="ms-err" id="e-product">Please describe your product or service.</div>
+        </div>
+
+        <!-- 4. Business Stage -->
+        <div class="ms-field">
+          <label class="ms-label" for="ms-stage">Business Stage <span>*</span></label>
+          <select class="ms-select" id="ms-stage" name="stage" required>
+            <option value="">Select stage</option>
+            <option value="Idea Stage">Idea Stage</option>
+            <option value="Early Stage">Early Stage</option>
+            <option value="Launched">Launched</option>
+            <option value="Scaling">Scaling</option>
+          </select>
+          <div class="ms-err" id="e-stage">Please select your business stage.</div>
+        </div>
+
+        <!-- 5. Target Audience -->
+        <div class="ms-field">
+          <label class="ms-label" for="ms-audience">Target Audience <span>*</span></label>
+          <textarea class="ms-textarea" id="ms-audience" name="audience" maxlength="300" rows="3" placeholder="Who are your ideal customers or users?" required></textarea>
+          <div class="ms-err" id="e-audience">Please describe your target audience.</div>
+        </div>
+
+        <!-- 6. Main Goal -->
+        <div class="ms-field">
+          <label class="ms-label" for="ms-goal">Main Goal <span>*</span></label>
+          <select class="ms-select" id="ms-goal" name="main_goal" required>
+            <option value="">Select goal</option>
+            <option value="Brand Awareness">Brand Awareness</option>
+            <option value="Increase Sales">Increase Sales</option>
+            <option value="App Downloads">App Downloads</option>
+            <option value="Lead Generation">Lead Generation</option>
+            <option value="Community Growth">Community Growth</option>
+            <option value="Fundraising">Fundraising</option>
+          </select>
+          <div class="ms-err" id="e-goal">Please select your main goal.</div>
+        </div>
+
+        <!-- 7. Current Marketing Efforts -->
+        <div class="ms-field">
+          <label class="ms-label" for="ms-marketing">Current Marketing Efforts <span>*</span></label>
+          <textarea class="ms-textarea" id="ms-marketing" name="current_marketing" maxlength="400" rows="3" placeholder="What marketing are you currently doing?" required></textarea>
+          <div class="ms-err" id="e-marketing">Please describe your current marketing efforts.</div>
+        </div>
+
+        <!-- 8. Biggest Challenges (checkboxes) -->
+        <div class="ms-field">
+          <label class="ms-label">Biggest Challenges <span>*</span></label>
+          <div class="ms-cb-group" id="ms-challenges">
+            <label><input type="checkbox" name="challenges" value="Low Sales"> Low Sales</label>
+            <label><input type="checkbox" name="challenges" value="No Reach"> No Reach</label>
+            <label><input type="checkbox" name="challenges" value="Low Engagement"> Low Engagement</label>
+            <label><input type="checkbox" name="challenges" value="Poor Branding"> Poor Branding</label>
+            <label><input type="checkbox" name="challenges" value="Customer Acquisition Issues"> Customer Acquisition Issues</label>
+          </div>
+          <div class="ms-err" id="e-challenges">Please select at least one challenge.</div>
+        </div>
+
+        <!-- 9. Competitors -->
+        <div class="ms-field">
+          <label class="ms-label" for="ms-competitors">Competitors or Inspiration <span>*</span></label>
+          <textarea class="ms-textarea" id="ms-competitors" name="competitors" maxlength="300" rows="3" placeholder="Startups, brands or creators you admire or compete with" required></textarea>
+          <div class="ms-err" id="e-competitors">Please add at least one competitor or inspiration.</div>
+        </div>
+
+        <!-- 10. Active Platforms (checkboxes) -->
+        <div class="ms-field">
+          <label class="ms-label">Platforms Currently Active On <span>*</span></label>
+          <div class="ms-cb-group" id="ms-platforms">
+            <label><input type="checkbox" name="platforms" value="Instagram"> Instagram</label>
+            <label><input type="checkbox" name="platforms" value="LinkedIn"> LinkedIn</label>
+            <label><input type="checkbox" name="platforms" value="YouTube"> YouTube</label>
+            <label><input type="checkbox" name="platforms" value="X/Twitter"> X/Twitter</label>
+            <label><input type="checkbox" name="platforms" value="Website"> Website</label>
+            <label><input type="checkbox" name="platforms" value="Discord"> Discord</label>
+            <label><input type="checkbox" name="platforms" value="WhatsApp"> WhatsApp</label>
+            <label><input type="checkbox" name="platforms" value="Other"> Other</label>
+          </div>
+          <div class="ms-err" id="e-platforms">Please select at least one platform.</div>
+        </div>
+
+        <!-- 11. Budget -->
+        <div class="ms-field">
+          <label class="ms-label" for="ms-budget">Monthly Marketing Budget <span>*</span></label>
+          <select class="ms-select" id="ms-budget" name="budget" required>
+            <option value="">Select budget</option>
+            <option value="Less than ₹5,000">Less than ₹5,000</option>
+            <option value="₹5,000 – ₹10,000">₹5,000 – ₹10,000</option>
+            <option value="₹10,000 – ₹25,000">₹10,000 – ₹25,000</option>
+            <option value="₹25,000 – ₹50,000">₹25,000 – ₹50,000</option>
+            <option value="More than ₹50,000">More than ₹50,000</option>
+          </select>
+          <div class="ms-err" id="e-budget">Please select your monthly marketing budget.</div>
+        </div>
+
+        <!-- 12. Location -->
+        <div class="ms-field">
+          <label class="ms-label" for="ms-location">Location / Target Market <span>*</span></label>
+          <input class="ms-input" type="text" id="ms-location" name="location" maxlength="100" placeholder="e.g. Mumbai, India or Global" required>
+          <div class="ms-err" id="e-location">Please enter your location or target market.</div>
+        </div>
+
+        <!-- 13. Team Size -->
+        <div class="ms-field">
+          <label class="ms-label" for="ms-team">Team Size <span>*</span></label>
+          <select class="ms-select" id="ms-team" name="team_size" required>
+            <option value="">Select size</option>
+            <option value="Solo Founder">Solo Founder</option>
+            <option value="2–5 People">2–5 People</option>
+            <option value="5–10 People">5–10 People</option>
+            <option value="10+ People">10+ People</option>
+          </select>
+          <div class="ms-err" id="e-team">Please select your team size.</div>
+        </div>
+
+        <!-- 14. Influencer Collaboration -->
+        <div class="ms-field">
+          <label class="ms-label" for="ms-influencer">Influencer Collaboration Interest <span>*</span></label>
+          <select class="ms-select" id="ms-influencer" name="influencer_interest" required>
+            <option value="">Select option</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+            <option value="Maybe">Maybe</option>
+          </select>
+          <div class="ms-err" id="e-influencer">Please select your interest in influencer collaboration.</div>
+        </div>
+
+        <!-- 15. Additional Information -->
+        <div class="ms-field">
+          <label class="ms-label" for="ms-additional">Additional Information <span>*</span></label>
+          <textarea class="ms-textarea" id="ms-additional" name="additional_info" maxlength="600" rows="4" placeholder="Anything else you want us to know before we build your strategy?" required></textarea>
+          <div class="ms-err" id="e-additional">Please add any additional information.</div>
+        </div>
+
+        <button type="submit" class="btn btn-secondary" id="ms-submit-btn">Submit &amp; Proceed to Payment →</button>
+      </form>
+    </div>
+
+    <!-- Success message -->
+    <div id="ms-success-msg" style="display:none">
+      <div class="ms-banner">✅ Details received! Complete your payment below.</div>
+    </div>
+
+    <!-- STEP 2: Payment -->
+    <div id="ms-payment-section">
+      <hr class="ms-divider">
+      <div class="ms-step-label">Step 2 — Complete Payment</div>
+      <div class="ms-pay-note">Pay ₹999 via UPI or Bank Transfer, then enter your transaction details below.</div>
+
+      <form id="ms-payment-form" novalidate>
+
+        <div class="ms-field">
+          <label class="ms-label" for="ms-pay-name">Full Name <span>*</span></label>
+          <input class="ms-input" type="text" id="ms-pay-name" name="full_name" placeholder="Your full name" required>
+          <div class="ms-err" id="e-pay-name">Please enter your full name.</div>
+        </div>
+
+        <div class="ms-field">
+          <label class="ms-label" for="ms-pay-email">Email <span>*</span></label>
+          <input class="ms-input" type="email" id="ms-pay-email" name="email" placeholder="you@example.com" required>
+          <div class="ms-err" id="e-pay-email">Please enter a valid email address.</div>
+        </div>
+
+        <div class="ms-field">
+          <label class="ms-label" for="ms-pay-service">Service Selected <span>*</span></label>
+          <input class="ms-input" type="text" id="ms-pay-service" name="service_selected" value="Marketing Strategy for Startups" readonly>
+        </div>
+
+        <div class="ms-field">
+          <label class="ms-label" for="ms-pay-method">Payment Method <span>*</span></label>
+          <select class="ms-select" id="ms-pay-method" name="payment_method" required>
+            <option value="">Select method…</option>
+            <option value="UPI">UPI</option>
+            <option value="Bank Transfer">Bank Transfer</option>
+          </select>
+          <div class="ms-err" id="e-pay-method">Please select a payment method.</div>
+        </div>
+
+        <div class="ms-field">
+          <label class="ms-label" for="ms-pay-txn">Transaction ID <span>*</span></label>
+          <input class="ms-input" type="text" id="ms-pay-txn" name="transaction_id" placeholder="Enter UPI ref or bank transfer ID" required>
+          <div class="ms-err" id="e-pay-txn">Please enter your transaction ID.</div>
+        </div>
+
+        <div class="ms-field">
+          <label class="ms-label" for="ms-pay-screenshot">Payment Screenshot <span style="color:var(--color-text-light);font-weight:400">(optional)</span></label>
+          <input class="ms-input" type="file" id="ms-pay-screenshot" name="screenshot" accept="image/*" style="padding:.5rem 1rem">
+        </div>
+
+        <button type="submit" class="btn btn-secondary" id="ms-pay-btn">Confirm Payment →</button>
+      </form>
+
+      <div id="ms-pay-success" style="display:none;margin-top:1.5rem">
+        <div class="ms-banner">🎉 Payment confirmed! Our team will build your strategy and reach out within 24 hours.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer" id="main-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>⚡ Dynamic Bubble</h4>
+        <p>Transforming startups into market leaders through exceptional design, development, and marketing.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About Us</a></li>
+
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Services</h4>
+        <ul class="footer-links">
+          <li><a href="services.html#web-development">Web Development</a></li>
+          <li><a href="services.html#social-media">Social Media Management</a></li>
+          <li><a href="services.html#digital-marketing">Digital Marketing</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Get In Touch</h4>
+        <ul class="footer-links">
+          <li class="footer-map">
+            <a class="footer-map-link" href="https://www.google.com/maps/place/Malad,+Mumbai,+Maharashtra,+India" target="_blank" rel="noopener noreferrer" aria-label="Open Malad, Mumbai in Google Maps">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5 14.5 7.62 14.5 9 13.38 11.5 12 11.5z"/></svg>
+              <span class="footer-location">Malad, Mumbai</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="copyright-year">2026</span> Dynamic Bubble. Developed with ♥ on 🌎.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/script.js"></script>
+<script src="../js/card-nav.js"></script>
+<script>
+(function(){
+  function v(id,errId,fn){
+    var el=document.getElementById(id),err=document.getElementById(errId);
+    var ok=fn?fn(el):el.value.trim()!=='';
+    err.classList.toggle('show',!ok);
+    return ok;
+  }
+  function cbv(groupId,errId){
+    var boxes=document.querySelectorAll('#'+groupId+' input[type=checkbox]');
+    var ok=Array.prototype.some.call(boxes,function(b){return b.checked;});
+    document.getElementById(errId).classList.toggle('show',!ok);
+    return ok;
+  }
+
+  document.getElementById('ms-form').addEventListener('submit',function(e){
+    e.preventDefault();
+    var ok=true;
+    if(!v('ms-startup-name','e-startup-name'))ok=false;
+    if(!v('ms-industry','e-industry'))ok=false;
+    if(!v('ms-product','e-product'))ok=false;
+    if(!v('ms-stage','e-stage'))ok=false;
+    if(!v('ms-audience','e-audience'))ok=false;
+    if(!v('ms-goal','e-goal'))ok=false;
+    if(!v('ms-marketing','e-marketing'))ok=false;
+    if(!cbv('ms-challenges','e-challenges'))ok=false;
+    if(!v('ms-competitors','e-competitors'))ok=false;
+    if(!cbv('ms-platforms','e-platforms'))ok=false;
+    if(!v('ms-budget','e-budget'))ok=false;
+    if(!v('ms-location','e-location'))ok=false;
+    if(!v('ms-team','e-team'))ok=false;
+    if(!v('ms-influencer','e-influencer'))ok=false;
+    if(!v('ms-additional','e-additional'))ok=false;
+    if(!ok)return;
+    document.getElementById('ms-questionnaire-section').style.display='none';
+    document.getElementById('ms-success-msg').style.display='block';
+    var ps=document.getElementById('ms-payment-section');
+    ps.classList.add('show');
+    ps.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+
+  document.getElementById('ms-payment-form').addEventListener('submit',function(e){
+    e.preventDefault();
+    var ok=true;
+    if(!v('ms-pay-name','e-pay-name'))ok=false;
+    if(!v('ms-pay-email','e-pay-email',function(el){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim());}))ok=false;
+    if(!v('ms-pay-method','e-pay-method'))ok=false;
+    if(!v('ms-pay-txn','e-pay-txn'))ok=false;
+    if(!ok)return;
+    document.getElementById('ms-payment-form').style.display='none';
+    document.getElementById('ms-pay-success').style.display='block';
+  });
+})();
+</script>
+</body>
+</html>
