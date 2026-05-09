@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dynamic Bubble Social Media Analysis — get actionable recommendations for your social media growth.">
+    <meta name="keywords" content="Dynamic Bubble, social media analysis, social media audit, Instagram audit">
+    <meta name="author" content="Dynamic Bubble">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Social Media Analysis | Dynamic Bubble">
+    <meta property="og:description" content="Dynamic Bubble Social Media Analysis — get actionable recommendations for your social media growth.">
+    <title>Social Media Analysis | Dynamic Bubble</title>
+    <link rel="icon" type="image/png" href="../assets/images/dynamic_bubble_logo.jpg">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <link rel="stylesheet" href="../css/card-nav.css">
+    <link rel="stylesheet" href="../css/text-type.css">
+    <link rel="stylesheet" href="../css/contact-input.css">
+    <style>
+        .sma-form-field { margin-bottom: 1.5rem; }
+        .sma-label { display: block; font-weight: 600; color: var(--color-text-dark); margin-bottom: 0.4rem; font-size: 0.95rem; }
+        .sma-label span { color: #e53e3e; margin-left: 2px; }
+        .sma-helper { font-size: 0.82rem; color: var(--color-text-light); margin-top: 0.25rem; }
+        .sma-input, .sma-select, .sma-textarea {
+            width: 100%; padding: 0.75rem 1rem; border: 1.5px solid #9e9e9e;
+            border-radius: 0.75rem; font-size: 1rem; font-family: var(--font-family);
+            color: var(--color-text-dark); background: #fff; box-sizing: border-box;
+            transition: border-color 0.2s;
+        }
+        .sma-input:focus, .sma-select:focus, .sma-textarea:focus {
+            outline: none; border-color: var(--color-primary);
+        }
+        .sma-textarea { min-height: 100px; resize: vertical; }
+        .sma-checkbox-group { display: flex; flex-wrap: wrap; gap: 0.5rem 1.2rem; margin-top: 0.4rem; }
+        .sma-checkbox-group label { display: flex; align-items: center; gap: 0.4rem; cursor: pointer; font-size: 0.95rem; color: var(--color-text-medium); }
+        .sma-checkbox-group input[type="checkbox"] { accent-color: var(--color-primary); width: 16px; height: 16px; }
+        .sma-error { color: #e53e3e; font-size: 0.82rem; margin-top: 0.25rem; display: none; }
+        .sma-error.visible { display: block; }
+        .sma-success-banner {
+            background: linear-gradient(135deg, #10B981, #059669); color: #fff;
+            padding: 1.25rem 1.5rem; border-radius: 1rem; margin-bottom: 2rem;
+            font-weight: 600; font-size: 1.05rem;
+        }
+        #payment-section { display: none; }
+        #payment-section.visible { display: block; }
+        .sma-divider { border: none; border-top: 1px solid var(--color-border-light); margin: 2.5rem 0; }
+        .sma-step-label {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.5rem 1.1rem; border-radius: 999px; background: #EDE9FE;
+            color: #7C3AED; font-weight: 700; font-size: 0.88rem; margin-bottom: 1.25rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="card-nav-container">
+        <nav class="card-nav">
+            <div class="card-nav-top">
+                <div class="hamburger-menu" role="button" aria-label="Toggle menu" tabindex="0">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </div>
+                <div class="logo-container">
+                    <a href="../index.html">
+                        <img src="../assets/images/dynamic_bubble_logo.jpg" alt="Dynamic Bubble" class="logo">
+                    </a>
+                </div>
+                <a href="contact.html" class="card-nav-cta-button">Get Started</a>
+            </div>
+            <div class="card-nav-content">
+                <div class="nav-card nav-card-explore">
+                    <div class="nav-card-label">Explore</div>
+                    <div class="nav-card-links">
+                        <a class="nav-card-link" href="../index.html" aria-label="Home">
+                            <svg class="nav-card-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                            Home
+                        </a>
+                        <a class="nav-card-link" href="about.html" aria-label="About Us">
+                            <svg class="nav-card-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            About Us
+                        </a>
+                        <a class="nav-card-link" href="services.html" aria-label="Services">
+                            <svg class="nav-card-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                            Services
+                        </a>
+                    </div>
+                </div>
+                <div class="nav-card nav-card-connect">
+                    <div class="nav-card-label">Connect</div>
+                    <div class="nav-card-links">
+                        <a class="nav-card-link" href="contact.html" aria-label="Contact Us">
+                            <svg class="nav-card-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            Contact
+                        </a>
+                        <a class="nav-card-link" href="mailto:dynamicbubbleinfo@gmail.com" aria-label="Email">
+                            <svg class="nav-card-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            Email
+                        </a>
+                        <a class="nav-card-link" href="https://www.linkedin.com/company/dynamic-bubble/" target="_blank" aria-label="LinkedIn">
+                            <svg class="nav-card-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path></svg>
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Page Content -->
+    <section class="section section-alt">
+        <div class="container-narrow">
+
+            <div class="section-header scroll-reveal" style="margin-bottom: 2rem;">
+                <h1>Social Media Analysis Questionnaire</h1>
+                <p>We will generate a basic report including what's working well, existing problems, suggested improvements, and actionable recommendations.</p>
+            </div>
+
+            <!-- Step 1: Questionnaire -->
+            <div id="questionnaire-section">
+                <div class="sma-step-label">Step 1 — Tell us about your account</div>
+                <form id="sma-form" novalidate>
+
+                    <!-- Field 1: Niche -->
+                    <div class="sma-form-field">
+                        <label class="sma-label" for="sma-niche">Niche / Topic <span>*</span></label>
+                        <input class="sma-input" type="text" id="sma-niche" name="niche" required placeholder="e.g. Fitness, Tech, Fashion...">
+                        <div class="sma-error" id="err-niche">Please enter your niche or topic.</div>
+                    </div>
+
+                    <!-- Field 2: Monetization Goal -->
+                    <div class="sma-form-field">
+                        <label class="sma-label" for="sma-goal">Monetization Goal <span>*</span></label>
+                        <select class="sma-select" id="sma-goal" name="goal" required>
+                            <option value="">Select a goal…</option>
+                            <option value="Gain followers">Gain followers</option>
+                            <option value="Get clients">Get clients</option>
+                            <option value="Increase sales">Increase sales</option>
+                            <option value="Brand deals">Brand deals</option>
+                            <option value="Job opportunities">Job opportunities</option>
+                            <option value="Community growth">Community growth</option>
+                        </select>
+                        <div class="sma-error" id="err-goal">Please select a monetization goal.</div>
+                    </div>
+
+                    <!-- Field 3: Platform -->
+                    <div class="sma-form-field">
+                        <label class="sma-label" for="sma-platform">Platform you want analysis on <span>*</span></label>
+                        <select class="sma-select" id="sma-platform" name="platform" required>
+                            <option value="">Select a platform…</option>
+                            <option value="Instagram">Instagram</option>
+                            <option value="LinkedIn">LinkedIn</option>
+                            <option value="YouTube">YouTube</option>
+                        </select>
+                        <div class="sma-error" id="err-platform">Please select a platform.</div>
+                    </div>
+
+                    <!-- Field 4: Account URL -->
+                    <div class="sma-form-field">
+                        <label class="sma-label" for="sma-url">Account Link / URL <span>*</span></label>
+                        <input class="sma-input" type="url" id="sma-url" name="account_url" required placeholder="https://...">
+                        <div class="sma-helper">Add link/url of account so we can review it</div>
+                        <div class="sma-error" id="err-url">Please enter a valid account URL.</div>
+                    </div>
+
+                    <!-- Field 5: Target Audience -->
+                    <div class="sma-form-field">
+                        <label class="sma-label" for="sma-audience">Target Audience <span>*</span></label>
+                        <textarea class="sma-textarea" id="sma-audience" name="audience" required placeholder=" "></textarea>
+                        <div class="sma-helper">Who is your target audience or ideal followers/customers?</div>
+                        <div class="sma-error" id="err-audience">Please describe your target audience.</div>
+                    </div>
+
+                    <!-- Field 6: Competitors -->
+                    <div class="sma-form-field">
+                        <label class="sma-label" for="sma-competitors">Competitors or Inspiration <span>*</span></label>
+                        <textarea class="sma-textarea" id="sma-competitors" name="competitors" required placeholder=" "></textarea>
+                        <div class="sma-helper">Any creators, brands, or pages you admire or want to compete with?</div>
+                        <div class="sma-error" id="err-competitors">Please add at least one competitor or inspiration.</div>
+                    </div>
+
+                    <!-- Field 7: Posting Frequency -->
+                    <div class="sma-form-field">
+                        <label class="sma-label" for="sma-frequency">Posting Frequency <span>*</span></label>
+                        <select class="sma-select" id="sma-frequency" name="frequency" required>
+                            <option value="">Select frequency…</option>
+                            <option value="Daily">Daily</option>
+                            <option value="3-4 times per week">3-4 times per week</option>
+                            <option value="1-2 times per week">1-2 times per week</option>
+                            <option value="Less frequent">Less frequent</option>
+                        </select>
+                        <div class="sma-error" id="err-frequency">Please select your posting frequency.</div>
+                    </div>
+
+                    <!-- Field 8: Current Challenges -->
+                    <div class="sma-form-field">
+                        <label class="sma-label">Current Challenges <span>*</span></label>
+                        <div class="sma-checkbox-group" id="sma-challenges">
+                            <label><input type="checkbox" name="challenges" value="Low reach"> Low reach</label>
+                            <label><input type="checkbox" name="challenges" value="Low engagement"> Low engagement</label>
+                            <label><input type="checkbox" name="challenges" value="No leads"> No leads</label>
+                            <label><input type="checkbox" name="challenges" value="Slow growth"> Slow growth</label>
+                            <label><input type="checkbox" name="challenges" value="Poor branding"> Poor branding</label>
+                            <label><input type="checkbox" name="challenges" value="Other"> Other</label>
+                        </div>
+                        <div class="sma-error" id="err-challenges">Please select at least one challenge.</div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="sma-submit-btn">Continue to Next Step</button>
+                </form>
+            </div>
+
+            <!-- Success message (hidden until form submits) -->
+            <div id="sma-success-banner" style="display:none;">
+                <div class="sma-success-banner">✅ Thanks for sharing your details. Please complete the next step below.</div>
+            </div>
+
+            <!-- Step 2: Payment / Details (hidden by default) -->
+            <div id="payment-section">
+                <hr class="sma-divider">
+                <div class="sma-step-label">Step 2 — Complete your details</div>
+
+                <form id="payment-form" novalidate>
+
+                    <div class="sma-form-field">
+                        <label class="sma-label" for="pay-name">Full Name <span>*</span></label>
+                        <input class="sma-input" type="text" id="pay-name" name="full_name" required placeholder="Your full name">
+                        <div class="sma-error" id="err-pay-name">Please enter your full name.</div>
+                    </div>
+
+                    <div class="sma-form-field">
+                        <label class="sma-label" for="pay-email">Email <span>*</span></label>
+                        <input class="sma-input" type="email" id="pay-email" name="email" required placeholder="you@example.com">
+                        <div class="sma-error" id="err-pay-email">Please enter a valid email address.</div>
+                    </div>
+
+                    <div class="sma-form-field">
+                        <label class="sma-label" for="pay-service">Service Selected <span>*</span></label>
+                        <input class="sma-input" type="text" id="pay-service" name="service_selected" readonly>
+                    </div>
+
+                    <div class="sma-form-field">
+                        <label class="sma-label" for="pay-method">Payment Method <span>*</span></label>
+                        <select class="sma-select" id="pay-method" name="payment_method" required>
+                            <option value="">Select method…</option>
+                            <option value="UPI">UPI</option>
+                            <option value="Bank Transfer">Bank Transfer</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <div class="sma-error" id="err-pay-method">Please select a payment method.</div>
+                    </div>
+
+                    <div class="sma-form-field">
+                        <label class="sma-label" for="pay-txn">Transaction ID <span>*</span></label>
+                        <input class="sma-input" type="text" id="pay-txn" name="transaction_id" required placeholder="Enter your transaction/UTR ID">
+                        <div class="sma-error" id="err-pay-txn">Please enter your transaction ID.</div>
+                    </div>
+
+                    <div class="sma-form-field">
+                        <label class="sma-label" for="pay-screenshot">Payment Screenshot <span style="color:var(--color-text-light); font-weight:400;">(optional)</span></label>
+                        <input class="sma-input" type="file" id="pay-screenshot" name="screenshot" accept="image/*" style="padding: 0.5rem 1rem;">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="pay-submit-btn">Submit</button>
+                </form>
+
+                <div id="pay-success" style="display:none; margin-top:1.5rem;">
+                    <div class="sma-success-banner">🎉 Your submission is received! We'll review your account and send the analysis report to your email soon.</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>⚡ Dynamic Bubble</h4>
+                    <p>Transforming startups into market leaders through exceptional design, development, and marketing.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html#web-development">Web Development</a></li>
+                        <li><a href="services.html#social-media">Social Media Management</a></li>
+                        <li><a href="services.html#digital-marketing">Digital Marketing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Get In Touch</h4>
+                    <ul class="footer-links">
+                        <li class="footer-map">
+                            <a class="footer-map-link" href="https://www.google.com/maps/place/Malad,+Mumbai,+Maharashtra,+India" target="_blank" rel="noopener noreferrer" aria-label="Open Malad, Mumbai in Google Maps">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5 14.5 7.62 14.5 9 13.38 11.5 12 11.5z"/></svg>
+                                <span class="footer-location">Malad, Mumbai</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="copyright-year">2026</span> Dynamic Bubble. Developed with ♥ on 🌎.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/card-nav.js"></script>
+
+    <script>
+        // ── Plan detection from URL ──────────────────────────────────────────
+        (function () {
+            const params = new URLSearchParams(window.location.search);
+            const plan = params.get('plan');
+            const serviceField = document.getElementById('pay-service');
+            if (plan === 'free') {
+                serviceField.value = 'Free Social Media Analysis';
+                document.title = 'Free Social Media Analysis | Dynamic Bubble';
+            } else if (plan === 'premium') {
+                serviceField.value = 'Premium Social Media Analysis';
+                document.title = 'Premium Social Media Analysis | Dynamic Bubble';
+            } else {
+                serviceField.value = 'Social Media Analysis';
+            }
+        })();
+
+        // ── Questionnaire form validation & step reveal ──────────────────────
+        document.getElementById('sma-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var valid = true;
+
+            function check(id, errId, condition) {
+                var el = document.getElementById(id);
+                var err = document.getElementById(errId);
+                var ok = condition ? condition(el) : el.value.trim() !== '';
+                err.classList.toggle('visible', !ok);
+                if (!ok) valid = false;
+            }
+
+            check('sma-niche', 'err-niche');
+            check('sma-goal', 'err-goal');
+            check('sma-platform', 'err-platform');
+            check('sma-url', 'err-url', function (el) {
+                try { return el.value.trim() !== '' && Boolean(new URL(el.value.trim())); } catch (e) { return false; }
+            });
+            check('sma-audience', 'err-audience');
+            check('sma-competitors', 'err-competitors');
+            check('sma-frequency', 'err-frequency');
+
+            // Checkbox group: at least one checked
+            var boxes = document.querySelectorAll('#sma-challenges input[type="checkbox"]');
+            var anyChecked = Array.prototype.some.call(boxes, function (b) { return b.checked; });
+            document.getElementById('err-challenges').classList.toggle('visible', !anyChecked);
+            if (!anyChecked) valid = false;
+
+            if (!valid) return;
+
+            // Success: hide form, show banner + payment section
+            document.getElementById('questionnaire-section').style.display = 'none';
+            document.getElementById('sma-success-banner').style.display = 'block';
+            var paySection = document.getElementById('payment-section');
+            paySection.classList.add('visible');
+            paySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        // ── Payment form validation ──────────────────────────────────────────
+        document.getElementById('payment-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var valid = true;
+
+            function checkPay(id, errId, condition) {
+                var el = document.getElementById(id);
+                var err = document.getElementById(errId);
+                var ok = condition ? condition(el) : el.value.trim() !== '';
+                err.classList.toggle('visible', !ok);
+                if (!ok) valid = false;
+            }
+
+            checkPay('pay-name', 'err-pay-name');
+            checkPay('pay-email', 'err-pay-email', function (el) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim());
+            });
+            checkPay('pay-method', 'err-pay-method');
+            checkPay('pay-txn', 'err-pay-txn');
+
+            if (!valid) return;
+
+            document.getElementById('payment-form').style.display = 'none';
+            document.getElementById('pay-success').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
