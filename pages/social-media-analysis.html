@@ -259,6 +259,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary" id="pay-submit-btn">Submit</button>
+                    <div class="sma-error" id="pay-submit-message" style="display:none;"></div>
                 </form>
 
                 <div id="pay-success" style="display:none; margin-top:1.5rem;">
@@ -314,6 +315,148 @@
 
     <script src="../js/script.js"></script>
     <script src="../js/card-nav.js"></script>
+    <script src="../js/form-submissions.js"></script>
+    <script>
+        (function () {
+            var helpers = window.DynamicBubbleForms;
+            var WEB3FORMS_ACCESS_KEY = 'ed11d871-5940-4029-8ede-23f9cac8bcea';
+            var questionnaireAnswers = {};
+
+            function checkedValues(selector) {
+                return Array.prototype.filter.call(document.querySelectorAll(selector), function (box) {
+                    return box.checked;
+                }).map(function (box) {
+                    return box.value;
+                }).join(', ');
+            }
+
+            function isStepOneValid() {
+                var accountUrl = document.getElementById('sma-url').value.trim();
+                try {
+                    new URL(accountUrl);
+                } catch (error) {
+                    return false;
+                }
+
+                return document.getElementById('sma-niche').value.trim() !== ''
+                    && document.getElementById('sma-goal').value.trim() !== ''
+                    && document.getElementById('sma-platform').value.trim() !== ''
+                    && accountUrl !== ''
+                    && document.getElementById('sma-audience').value.trim() !== ''
+                    && document.getElementById('sma-competitors').value.trim() !== ''
+                    && document.getElementById('sma-frequency').value.trim() !== ''
+                    && checkedValues('#sma-challenges input[type="checkbox"]') !== '';
+            }
+
+            function saveQuestionnaireAnswers() {
+                questionnaireAnswers = {
+                    nicheTopic: document.getElementById('sma-niche').value.trim(),
+                    monetizationGoal: document.getElementById('sma-goal').value.trim(),
+                    platform: document.getElementById('sma-platform').value.trim(),
+                    accountUrl: document.getElementById('sma-url').value.trim(),
+                    targetAudience: document.getElementById('sma-audience').value.trim(),
+                    competitorsInspiration: document.getElementById('sma-competitors').value.trim(),
+                    postingFrequency: document.getElementById('sma-frequency').value.trim(),
+                    currentChallenges: checkedValues('#sma-challenges input[type="checkbox"]')
+                };
+            }
+
+            function setSubmitMessage(message) {
+                var messageEl = document.getElementById('pay-submit-message');
+                messageEl.textContent = message || '';
+                messageEl.style.display = message ? 'block' : 'none';
+            }
+
+            function setButtonLoading(button, isLoading, loadingText) {
+                if (!button.dataset.originalText) {
+                    button.dataset.originalText = button.textContent;
+                }
+                button.disabled = isLoading;
+                button.textContent = isLoading ? loadingText : button.dataset.originalText;
+            }
+
+            document.getElementById('sma-form').addEventListener('submit', function () {
+                if (isStepOneValid()) {
+                    saveQuestionnaireAnswers();
+                }
+            }, true);
+
+            document.getElementById('payment-form').addEventListener('submit', async function (event) {
+                event.preventDefault();
+                event.stopImmediatePropagation();
+
+                var valid = true;
+                setSubmitMessage('');
+                function checkPay(id, errId, condition) {
+                    var el = document.getElementById(id);
+                    var err = document.getElementById(errId);
+                    var ok = condition ? condition(el) : el.value.trim() !== '';
+                    err.classList.toggle('visible', !ok);
+                    if (!ok) valid = false;
+                }
+
+                checkPay('pay-name', 'err-pay-name');
+                checkPay('pay-email', 'err-pay-email', function (el) {
+                    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim());
+                });
+                checkPay('pay-method', 'err-pay-method');
+                checkPay('pay-txn', 'err-pay-txn');
+
+                if (!valid) return;
+                if (!questionnaireAnswers.nicheTopic && isStepOneValid()) {
+                    saveQuestionnaireAnswers();
+                }
+
+                var submitButton = document.getElementById('pay-submit-btn');
+                var transactionId = document.getElementById('pay-txn').value.trim();
+                var screenshotFile = document.getElementById('pay-screenshot').files[0];
+                var proofFileName = screenshotFile ? helpers.sanitizeFileName(screenshotFile.name) : '';
+                var screenshotUrl = '';
+
+                setSubmitMessage('');
+                setButtonLoading(submitButton, true, screenshotFile ? 'Uploading...' : 'Submitting...');
+
+                try {
+                    if (screenshotFile) {
+                        screenshotUrl = await helpers.uploadPaymentProof(screenshotFile, transactionId);
+                        setButtonLoading(submitButton, true, 'Submitting...');
+                    }
+
+                    var selectedService = document.getElementById('pay-service').value.trim();
+                    var web3FormData = new FormData();
+                    web3FormData.append('access_key', WEB3FORMS_ACCESS_KEY);
+                    web3FormData.append('subject', 'Dynamic Bubble - Social Media Analysis Submission');
+                    web3FormData.append('from_name', 'Dynamic Bubble Website');
+                    web3FormData.append('submittedAt', new Date().toISOString());
+                    web3FormData.append('pageSource', 'pages/social-media-analysis.html');
+                    web3FormData.append('selectedService', selectedService);
+                    web3FormData.append('serviceSelected', selectedService);
+
+                    Object.keys(questionnaireAnswers).forEach(function (key) {
+                        web3FormData.append(key, questionnaireAnswers[key]);
+                    });
+
+                    web3FormData.append('fullName', document.getElementById('pay-name').value.trim());
+                    web3FormData.append('email', document.getElementById('pay-email').value.trim());
+                    web3FormData.append('paymentMethod', document.getElementById('pay-method').value.trim());
+                    web3FormData.append('transactionId', transactionId);
+                    web3FormData.append('proofFileName', proofFileName);
+                    web3FormData.append('screenshotUrl', screenshotUrl);
+                    web3FormData.delete('screenshot');
+                    web3FormData.delete('paymentProof');
+
+                    await helpers.submitToWeb3Forms(web3FormData);
+
+                    document.getElementById('payment-form').style.display = 'none';
+                    document.getElementById('pay-success').style.display = 'block';
+                } catch (error) {
+                    setSubmitMessage(error.message || 'Submission failed. Please try again.');
+                } finally {
+                    setButtonLoading(submitButton, false);
+                }
+            }, true);
+        })();
+    </script>
 
     <script>
         // ── Plan detection from URL ──────────────────────────────────────────

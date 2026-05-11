@@ -319,6 +319,7 @@
         </div>
 
         <button type="submit" class="btn btn-secondary" id="ms-pay-btn">Confirm Payment →</button>
+        <div class="ms-err" id="ms-pay-submit-message" style="display:none"></div>
       </form>
 
       <div id="ms-pay-success" style="display:none;margin-top:1.5rem">
@@ -374,6 +375,156 @@
 
 <script src="../js/script.js"></script>
 <script src="../js/card-nav.js"></script>
+<script src="../js/form-submissions.js"></script>
+<script>
+(function(){
+  var helpers=window.DynamicBubbleForms;
+  var WEB3FORMS_ACCESS_KEY='ed11d871-5940-4029-8ede-23f9cac8bcea';
+  var questionnaireAnswers={};
+
+  function checkedValues(selector){
+    return Array.prototype.filter.call(document.querySelectorAll(selector),function(box){
+      return box.checked;
+    }).map(function(box){
+      return box.value;
+    }).join(', ');
+  }
+
+  function hasValue(id){
+    return document.getElementById(id).value.trim()!=='';
+  }
+
+  function isStepOneValid(){
+    return hasValue('ms-startup-name')
+      && hasValue('ms-industry')
+      && hasValue('ms-product')
+      && hasValue('ms-stage')
+      && hasValue('ms-audience')
+      && hasValue('ms-goal')
+      && hasValue('ms-marketing')
+      && checkedValues('#ms-challenges input[type=checkbox]')!==''
+      && hasValue('ms-competitors')
+      && checkedValues('#ms-platforms input[type=checkbox]')!==''
+      && hasValue('ms-budget')
+      && hasValue('ms-location')
+      && hasValue('ms-team')
+      && hasValue('ms-influencer')
+      && hasValue('ms-additional');
+  }
+
+  function saveQuestionnaireAnswers(){
+    questionnaireAnswers={
+      startupBusinessName:document.getElementById('ms-startup-name').value.trim(),
+      industryNiche:document.getElementById('ms-industry').value.trim(),
+      productServiceDetails:document.getElementById('ms-product').value.trim(),
+      businessStage:document.getElementById('ms-stage').value.trim(),
+      targetAudience:document.getElementById('ms-audience').value.trim(),
+      mainGoal:document.getElementById('ms-goal').value.trim(),
+      currentMarketingEfforts:document.getElementById('ms-marketing').value.trim(),
+      biggestChallenges:checkedValues('#ms-challenges input[type=checkbox]'),
+      competitorsInspiration:document.getElementById('ms-competitors').value.trim(),
+      platformsActive:checkedValues('#ms-platforms input[type=checkbox]'),
+      monthlyMarketingBudget:document.getElementById('ms-budget').value.trim(),
+      locationTargetMarket:document.getElementById('ms-location').value.trim(),
+      teamSize:document.getElementById('ms-team').value.trim(),
+      influencerCollaboration:document.getElementById('ms-influencer').value.trim(),
+      additionalInformation:document.getElementById('ms-additional').value.trim()
+    };
+  }
+
+  function setSubmitMessage(message){
+    var messageEl=document.getElementById('ms-pay-submit-message');
+    messageEl.textContent=message||'';
+    messageEl.style.display=message?'block':'none';
+  }
+
+  function setButtonLoading(button,isLoading,loadingText){
+    if(!button.dataset.originalText){
+      button.dataset.originalText=button.textContent;
+    }
+    button.disabled=isLoading;
+    button.textContent=isLoading?loadingText:button.dataset.originalText;
+  }
+
+  document.getElementById('ms-form').addEventListener('submit',function(){
+    if(isStepOneValid()){
+      saveQuestionnaireAnswers();
+    }
+  },true);
+
+  document.getElementById('ms-payment-form').addEventListener('submit',async function(event){
+    event.preventDefault();
+    event.stopImmediatePropagation();
+
+    var ok=true;
+    setSubmitMessage('');
+    function v(id,errId,fn){
+      var el=document.getElementById(id),err=document.getElementById(errId);
+      var valid=fn?fn(el):el.value.trim()!=='';
+      err.classList.toggle('show',!valid);
+      if(!valid)ok=false;
+    }
+
+    v('ms-pay-name','e-pay-name');
+    v('ms-pay-email','e-pay-email',function(el){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim());});
+    v('ms-pay-method','e-pay-method');
+    v('ms-pay-txn','e-pay-txn');
+
+    if(!ok)return;
+    if(!questionnaireAnswers.startupBusinessName&&isStepOneValid()){
+      saveQuestionnaireAnswers();
+    }
+
+    var submitButton=document.getElementById('ms-pay-btn');
+    var transactionId=document.getElementById('ms-pay-txn').value.trim();
+    var screenshotFile=document.getElementById('ms-pay-screenshot').files[0];
+    var proofFileName=screenshotFile?helpers.sanitizeFileName(screenshotFile.name):'';
+    var screenshotUrl='';
+
+    setSubmitMessage('');
+    setButtonLoading(submitButton,true,screenshotFile?'Uploading...':'Submitting...');
+
+    try{
+      if(screenshotFile){
+        screenshotUrl=await helpers.uploadPaymentProof(screenshotFile,transactionId);
+        setButtonLoading(submitButton,true,'Submitting...');
+      }
+
+      var selectedService='Marketing Strategy for Startups';
+      var web3FormData=new FormData();
+      web3FormData.append('access_key',WEB3FORMS_ACCESS_KEY);
+      web3FormData.append('subject','Dynamic Bubble - Marketing Strategy Submission');
+      web3FormData.append('from_name','Dynamic Bubble Website');
+      web3FormData.append('submittedAt',new Date().toISOString());
+      web3FormData.append('pageSource','pages/marketing-strategy.html');
+      web3FormData.append('selectedService',selectedService);
+      web3FormData.append('serviceSelected',selectedService);
+
+      Object.keys(questionnaireAnswers).forEach(function(key){
+        web3FormData.append(key,questionnaireAnswers[key]);
+      });
+
+      web3FormData.append('fullName',document.getElementById('ms-pay-name').value.trim());
+      web3FormData.append('email',document.getElementById('ms-pay-email').value.trim());
+      web3FormData.append('paymentMethod',document.getElementById('ms-pay-method').value.trim());
+      web3FormData.append('transactionId',transactionId);
+      web3FormData.append('proofFileName',proofFileName);
+      web3FormData.append('screenshotUrl',screenshotUrl);
+      web3FormData.delete('screenshot');
+      web3FormData.delete('paymentProof');
+
+      await helpers.submitToWeb3Forms(web3FormData);
+
+      document.getElementById('ms-payment-form').style.display='none';
+      document.getElementById('ms-pay-success').style.display='block';
+    }catch(error){
+      setSubmitMessage(error.message||'Submission failed. Please try again.');
+    }finally{
+      setButtonLoading(submitButton,false);
+    }
+  },true);
+})();
+</script>
 <script>
 (function(){
   function v(id,errId,fn){
