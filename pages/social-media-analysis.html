@@ -50,6 +50,37 @@
             padding: 0.5rem 1.1rem; border-radius: 999px; background: #EDE9FE;
             color: #7C3AED; font-weight: 700; font-size: 0.88rem; margin-bottom: 1.25rem;
         }
+        .payment-step-card {
+            background: #fff; border: 1px solid rgba(124, 58, 237, 0.18);
+            border-radius: 1rem; padding: clamp(1.25rem, 3vw, 2rem);
+            box-shadow: 0 18px 50px rgba(31, 24, 64, 0.08); margin-top: 1.5rem;
+        }
+        .payment-summary-box, .payment-instructions-box {
+            border-radius: 0.9rem; padding: 1rem 1.1rem; margin-bottom: 1.25rem;
+        }
+        .payment-summary-box { background: #FAFAFF; border: 1px solid #EDE9FE; }
+        .payment-instructions-box {
+            background: #F8F5FF; border: 1px solid rgba(124, 58, 237, 0.26);
+            border-left: 4px solid #7C3AED; color: var(--color-text-dark);
+            line-height: 1.55;
+        }
+        .payment-info-row {
+            display: flex; align-items: flex-start; justify-content: space-between;
+            gap: 1rem; margin: 0.4rem 0;
+        }
+        .payment-info-row span {
+            color: var(--color-text-light); font-size: 0.78rem; font-weight: 700;
+            letter-spacing: 0.04em; text-transform: uppercase;
+        }
+        .payment-info-row strong, .payment-highlight {
+            color: #4C1D95; font-weight: 800; overflow-wrap: anywhere;
+        }
+        .payment-instruction-lead { margin: 0 0 0.65rem; font-weight: 600; }
+        .final-success-message { margin-top: 1.5rem; }
+        @media (max-width: 600px) {
+            .payment-step-card { padding: 1rem; }
+            .payment-info-row { flex-direction: column; gap: 0.2rem; }
+        }
     </style>
 </head>
 <body>
@@ -214,11 +245,20 @@
 
             <!-- Step 2: Payment / Details (hidden by default) -->
             <div id="payment-section">
-                <hr class="sma-divider">
-                <div class="sma-step-label">Step 2 — Complete your details</div>
-                <div id="sma-payment-instructions" class="sma-helper" style="background:#FFF7ED;border-left:3px solid #F59E0B;padding:.85rem 1rem;border-radius:.5rem;font-size:.92rem;color:var(--color-text-medium);margin-bottom:1.5rem;"></div>
+                <div class="payment-step-card">
+                    <div class="sma-step-label">Step 2 — Complete your details</div>
 
-                <form id="payment-form" novalidate>
+                    <div class="payment-summary-box">
+                        <div class="payment-info-row">
+                            <span>Selected Service</span>
+                            <strong id="sma-selected-service-display">Social Media Analysis</strong>
+                        </div>
+                        <input type="hidden" id="pay-service" name="service_selected" value="Social Media Analysis">
+                    </div>
+
+                    <div id="sma-payment-instructions" class="payment-instructions-box"></div>
+
+                    <form id="payment-form" novalidate>
 
                     <div class="sma-form-field">
                         <label class="sma-label" for="pay-name">Full Name <span>*</span></label>
@@ -230,11 +270,6 @@
                         <label class="sma-label" for="pay-email">Email <span>*</span></label>
                         <input class="sma-input" type="email" id="pay-email" name="email" required placeholder="you@example.com">
                         <div class="sma-error" id="err-pay-email">Please enter a valid email address.</div>
-                    </div>
-
-                    <div class="sma-form-field">
-                        <label class="sma-label" for="pay-service">Service Selected <span>*</span></label>
-                        <input class="sma-input" type="text" id="pay-service" name="service_selected" readonly>
                     </div>
 
                     <div class="sma-form-field">
@@ -261,10 +296,11 @@
 
                     <button type="submit" class="btn btn-primary" id="pay-submit-btn">Submit</button>
                     <div class="sma-error" id="pay-submit-message" style="display:none;"></div>
-                </form>
+                    </form>
 
-                <div id="pay-success" style="display:none; margin-top:1.5rem;">
+                    <div id="pay-success" class="final-success-message" style="display:none;">
                     <div class="sma-success-banner">🎉 Your submission is received! We'll review your account and send the analysis report to your email soon.</div>
+                    </div>
                 </div>
             </div>
 
@@ -378,15 +414,19 @@
 
             window.updateSmaPaymentInstructions = function () {
                 var instructionEl = document.getElementById('sma-payment-instructions');
+                var serviceDisplay = document.getElementById('sma-selected-service-display');
                 var selectedService = document.getElementById('pay-service').value.trim();
                 if (!instructionEl) return;
+                if (serviceDisplay) {
+                    serviceDisplay.textContent = selectedService || 'Social Media Analysis';
+                }
 
                 if (selectedService === 'Free Social Media Analysis') {
-                    instructionEl.textContent = 'Free analysis does not require payment. Submit your details below.';
+                    instructionEl.innerHTML = '<p class="payment-instruction-lead">Free analysis does not require payment. Submit your details below.</p>';
                     return;
                 }
 
-                instructionEl.innerHTML = 'Pay using UPI before submitting payment details.<br><strong>UPI ID:</strong> 9899812449@jupiteraxis<br><strong>Amount:</strong> ₹499 / ₹799 as confirmed';
+                instructionEl.innerHTML = '<p class="payment-instruction-lead">Pay using UPI before submitting payment details.</p><div class="payment-info-row"><span>UPI ID</span><strong>9899812449@jupiteraxis</strong></div><div class="payment-info-row"><span>Amount</span><strong>₹499 / ₹799 as confirmed</strong></div>';
             };
 
             document.getElementById('sma-form').addEventListener('submit', function () {
@@ -543,36 +583,14 @@
             // Success: hide form, show banner + payment section
             document.getElementById('questionnaire-section').style.display = 'none';
             document.getElementById('sma-success-banner').style.display = 'block';
+            document.getElementById('payment-form').style.display = 'block';
+            document.getElementById('pay-success').style.display = 'none';
             var paySection = document.getElementById('payment-section');
             paySection.classList.add('visible');
             paySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
 
         // ── Payment form validation ──────────────────────────────────────────
-        document.getElementById('payment-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-            var valid = true;
-
-            function checkPay(id, errId, condition) {
-                var el = document.getElementById(id);
-                var err = document.getElementById(errId);
-                var ok = condition ? condition(el) : el.value.trim() !== '';
-                err.classList.toggle('visible', !ok);
-                if (!ok) valid = false;
-            }
-
-            checkPay('pay-name', 'err-pay-name');
-            checkPay('pay-email', 'err-pay-email', function (el) {
-                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim());
-            });
-            checkPay('pay-method', 'err-pay-method');
-            checkPay('pay-txn', 'err-pay-txn');
-
-            if (!valid) return;
-
-            document.getElementById('payment-form').style.display = 'none';
-            document.getElementById('pay-success').style.display = 'block';
-        });
     </script>
 </body>
 </html>
