@@ -276,7 +276,7 @@
     <div id="ms-payment-section">
       <hr class="ms-divider">
       <div class="ms-step-label">Step 2 — Complete Payment</div>
-      <div class="ms-pay-note">Pay ₹999 via UPI or Bank Transfer, then enter your transaction details below.</div>
+      <div class="ms-pay-note">Pay using UPI before submitting payment details.<br><strong>UPI ID:</strong> 9899812449@jupiteraxis<br><strong>Amount:</strong> ₹999</div>
 
       <form id="ms-payment-form" novalidate>
 
@@ -478,16 +478,23 @@
     var submitButton=document.getElementById('ms-pay-btn');
     var transactionId=document.getElementById('ms-pay-txn').value.trim();
     var screenshotFile=document.getElementById('ms-pay-screenshot').files[0];
-    var proofFileName=screenshotFile?helpers.sanitizeFileName(screenshotFile.name):'';
+    var proofFileName=screenshotFile?screenshotFile.name:'';
     var screenshotUrl='';
+    var screenshotUploadStatus=screenshotFile?'failed':'not_provided';
+    var submissionSucceeded=false;
 
     setSubmitMessage('');
-    setButtonLoading(submitButton,true,screenshotFile?'Uploading...':'Submitting...');
+    setButtonLoading(submitButton,true,'Submitting...');
 
     try{
       if(screenshotFile){
-        screenshotUrl=await helpers.uploadPaymentProof(screenshotFile,transactionId);
-        setButtonLoading(submitButton,true,'Submitting...');
+        try{
+          screenshotUrl=await helpers.uploadPaymentProof(screenshotFile,transactionId);
+          screenshotUploadStatus='uploaded';
+        }catch(uploadError){
+          screenshotUrl='';
+          screenshotUploadStatus='failed';
+        }
       }
 
       var selectedService='Marketing Strategy for Startups';
@@ -510,17 +517,21 @@
       web3FormData.append('transactionId',transactionId);
       web3FormData.append('proofFileName',proofFileName);
       web3FormData.append('screenshotUrl',screenshotUrl);
+      web3FormData.append('screenshotUploadStatus',screenshotUploadStatus);
       web3FormData.delete('screenshot');
       web3FormData.delete('paymentProof');
 
       await helpers.submitToWeb3Forms(web3FormData);
+      submissionSucceeded=true;
 
       document.getElementById('ms-payment-form').style.display='none';
       document.getElementById('ms-pay-success').style.display='block';
     }catch(error){
       setSubmitMessage(error.message||'Submission failed. Please try again.');
     }finally{
-      setButtonLoading(submitButton,false);
+      if(!submissionSucceeded){
+        setButtonLoading(submitButton,false);
+      }
     }
   },true);
 })();
