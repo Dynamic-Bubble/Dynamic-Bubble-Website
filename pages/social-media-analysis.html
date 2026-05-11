@@ -216,6 +216,7 @@
             <div id="payment-section">
                 <hr class="sma-divider">
                 <div class="sma-step-label">Step 2 — Complete your details</div>
+                <div id="sma-payment-instructions" class="sma-helper" style="background:#FFF7ED;border-left:3px solid #F59E0B;padding:.85rem 1rem;border-radius:.5rem;font-size:.92rem;color:var(--color-text-medium);margin-bottom:1.5rem;"></div>
 
                 <form id="payment-form" novalidate>
 
@@ -375,6 +376,19 @@
                 button.textContent = isLoading ? loadingText : button.dataset.originalText;
             }
 
+            window.updateSmaPaymentInstructions = function () {
+                var instructionEl = document.getElementById('sma-payment-instructions');
+                var selectedService = document.getElementById('pay-service').value.trim();
+                if (!instructionEl) return;
+
+                if (selectedService === 'Free Social Media Analysis') {
+                    instructionEl.textContent = 'Free analysis does not require payment. Submit your details below.';
+                    return;
+                }
+
+                instructionEl.innerHTML = 'Pay using UPI before submitting payment details.<br><strong>UPI ID:</strong> 9899812449@jupiteraxis<br><strong>Amount:</strong> ₹499 / ₹799 as confirmed';
+            };
+
             document.getElementById('sma-form').addEventListener('submit', function () {
                 if (isStepOneValid()) {
                     saveQuestionnaireAnswers();
@@ -399,8 +413,15 @@
                 checkPay('pay-email', 'err-pay-email', function (el) {
                     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim());
                 });
-                checkPay('pay-method', 'err-pay-method');
-                checkPay('pay-txn', 'err-pay-txn');
+                var selectedService = document.getElementById('pay-service').value.trim();
+                var isFreeAnalysis = selectedService === 'Free Social Media Analysis';
+                if (!isFreeAnalysis) {
+                    checkPay('pay-method', 'err-pay-method');
+                    checkPay('pay-txn', 'err-pay-txn');
+                } else {
+                    document.getElementById('err-pay-method').classList.remove('visible');
+                    document.getElementById('err-pay-txn').classList.remove('visible');
+                }
 
                 if (!valid) return;
                 if (!questionnaireAnswers.nicheTopic && isStepOneValid()) {
@@ -410,19 +431,25 @@
                 var submitButton = document.getElementById('pay-submit-btn');
                 var transactionId = document.getElementById('pay-txn').value.trim();
                 var screenshotFile = document.getElementById('pay-screenshot').files[0];
-                var proofFileName = screenshotFile ? helpers.sanitizeFileName(screenshotFile.name) : '';
+                var proofFileName = screenshotFile ? screenshotFile.name : '';
                 var screenshotUrl = '';
+                var screenshotUploadStatus = screenshotFile ? 'failed' : 'not_provided';
+                var submissionSucceeded = false;
 
                 setSubmitMessage('');
-                setButtonLoading(submitButton, true, screenshotFile ? 'Uploading...' : 'Submitting...');
+                setButtonLoading(submitButton, true, 'Submitting...');
 
                 try {
                     if (screenshotFile) {
-                        screenshotUrl = await helpers.uploadPaymentProof(screenshotFile, transactionId);
-                        setButtonLoading(submitButton, true, 'Submitting...');
+                        try {
+                            screenshotUrl = await helpers.uploadPaymentProof(screenshotFile, transactionId);
+                            screenshotUploadStatus = 'uploaded';
+                        } catch (uploadError) {
+                            screenshotUrl = '';
+                            screenshotUploadStatus = 'failed';
+                        }
                     }
 
-                    var selectedService = document.getElementById('pay-service').value.trim();
                     var web3FormData = new FormData();
                     web3FormData.append('access_key', WEB3FORMS_ACCESS_KEY);
                     web3FormData.append('subject', 'Dynamic Bubble - Social Media Analysis Submission');
@@ -438,21 +465,25 @@
 
                     web3FormData.append('fullName', document.getElementById('pay-name').value.trim());
                     web3FormData.append('email', document.getElementById('pay-email').value.trim());
-                    web3FormData.append('paymentMethod', document.getElementById('pay-method').value.trim());
-                    web3FormData.append('transactionId', transactionId);
+                    web3FormData.append('paymentMethod', isFreeAnalysis && !document.getElementById('pay-method').value.trim() ? 'Not required' : document.getElementById('pay-method').value.trim());
+                    web3FormData.append('transactionId', isFreeAnalysis && !transactionId ? 'Not required' : transactionId);
                     web3FormData.append('proofFileName', proofFileName);
                     web3FormData.append('screenshotUrl', screenshotUrl);
+                    web3FormData.append('screenshotUploadStatus', screenshotUploadStatus);
                     web3FormData.delete('screenshot');
                     web3FormData.delete('paymentProof');
 
                     await helpers.submitToWeb3Forms(web3FormData);
+                    submissionSucceeded = true;
 
                     document.getElementById('payment-form').style.display = 'none';
                     document.getElementById('pay-success').style.display = 'block';
                 } catch (error) {
                     setSubmitMessage(error.message || 'Submission failed. Please try again.');
                 } finally {
-                    setButtonLoading(submitButton, false);
+                    if (!submissionSucceeded) {
+                        setButtonLoading(submitButton, false);
+                    }
                 }
             }, true);
         })();
@@ -472,6 +503,9 @@
                 document.title = 'Premium Social Media Analysis | Dynamic Bubble';
             } else {
                 serviceField.value = 'Social Media Analysis';
+            }
+            if (window.updateSmaPaymentInstructions) {
+                window.updateSmaPaymentInstructions();
             }
         })();
 
