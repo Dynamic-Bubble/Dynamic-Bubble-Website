@@ -44,6 +44,9 @@
         }
         #payment-section { display: none; }
         #payment-section.visible { display: block; }
+        .free-contact-fields { display: none; }
+        body.sma-free .free-contact-fields { display: block; }
+        body.sma-free #payment-section { display: none !important; }
         .sma-divider { border: none; border-top: 1px solid var(--color-border-light); margin: 2.5rem 0; }
         .sma-step-label {
             display: inline-flex; align-items: center; gap: 0.5rem;
@@ -140,7 +143,7 @@
         <div class="container-narrow">
 
             <div class="section-header scroll-reveal" style="margin-bottom: 2rem;">
-                <h1>Social Media Analysis Questionnaire</h1>
+                <h1 id="sma-page-title">Social Media Analysis Questionnaire</h1>
                 <p>We will generate a basic report including what's working well, existing problems, suggested improvements, and actionable recommendations.</p>
             </div>
 
@@ -234,7 +237,25 @@
                         <div class="sma-error" id="err-challenges">Please select at least one challenge.</div>
                     </div>
 
+                    <div id="free-contact-fields" class="free-contact-fields">
+                        <hr class="sma-divider">
+                        <div class="sma-step-label">Contact details</div>
+
+                        <div class="sma-form-field">
+                            <label class="sma-label" for="free-name">Full Name <span>*</span></label>
+                            <input class="sma-input" type="text" id="free-name" name="full_name" placeholder="Your full name">
+                            <div class="sma-error" id="err-free-name">Please enter your full name.</div>
+                        </div>
+
+                        <div class="sma-form-field">
+                            <label class="sma-label" for="free-email">Email <span>*</span></label>
+                            <input class="sma-input" type="email" id="free-email" name="email" placeholder="you@example.com">
+                            <div class="sma-error" id="err-free-email">Please enter a valid email address.</div>
+                        </div>
+                    </div>
+
                     <button type="submit" class="btn btn-primary" id="sma-submit-btn">Continue to Next Step</button>
+                    <div class="sma-error" id="sma-submit-message"></div>
                 </form>
             </div>
 
@@ -365,6 +386,11 @@
             var helpers = window.DynamicBubbleForms;
             var WEB3FORMS_ACCESS_KEY = 'ed11d871-5940-4029-8ede-23f9cac8bcea';
             var questionnaireAnswers = {};
+            var params = new URLSearchParams(window.location.search);
+            var plan = params.get('plan');
+            var isPremium = plan === 'premium';
+            var selectedServiceName = isPremium ? 'Premium Social Media Analysis' : 'Free Social Media Analysis';
+            var planType = isPremium ? 'premium' : 'free';
 
             function checkedValues(selector) {
                 return Array.prototype.filter.call(document.querySelectorAll(selector), function (box) {
@@ -372,6 +398,10 @@
                 }).map(function (box) {
                     return box.value;
                 }).join(', ');
+            }
+
+            function isValidEmail(value) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
             }
 
             function isStepOneValid() {
@@ -411,6 +441,13 @@
                 messageEl.style.display = message ? 'block' : 'none';
             }
 
+            function setFreeSubmitMessage(message) {
+                var messageEl = document.getElementById('sma-submit-message');
+                if (!messageEl) return;
+                messageEl.textContent = message || '';
+                messageEl.classList.toggle('visible', Boolean(message));
+            }
+
             function setButtonLoading(button, isLoading, loadingText) {
                 if (!button.dataset.originalText) {
                     button.dataset.originalText = button.textContent;
@@ -419,21 +456,58 @@
                 button.textContent = isLoading ? loadingText : button.dataset.originalText;
             }
 
+            function appendQuestionnaireData(formData) {
+                Object.keys(questionnaireAnswers).forEach(function (key) {
+                    formData.append(key, questionnaireAnswers[key]);
+                });
+            }
+
+            async function submitFreeAnalysis() {
+                if (!questionnaireAnswers.nicheTopic && isStepOneValid()) {
+                    saveQuestionnaireAnswers();
+                }
+
+                var web3FormData = new FormData();
+                web3FormData.append('access_key', WEB3FORMS_ACCESS_KEY);
+                web3FormData.append('subject', 'Free Social Media Analysis Submission');
+                web3FormData.append('from_name', 'Dynamic Bubble Website');
+                web3FormData.append('submittedAt', new Date().toISOString());
+                web3FormData.append('pageSource', 'pages/social-media-analysis.html');
+                web3FormData.append('selectedService', 'Free Social Media Analysis');
+                web3FormData.append('planType', 'free');
+                web3FormData.append('fullName', document.getElementById('free-name').value.trim());
+                web3FormData.append('email', document.getElementById('free-email').value.trim());
+                appendQuestionnaireData(web3FormData);
+                web3FormData.append('paymentRequired', 'no');
+                web3FormData.append('paymentMethod', 'not_applicable');
+                web3FormData.append('transactionId', 'not_applicable');
+                web3FormData.append('proofFileName', '');
+                web3FormData.append('screenshotUrl', '');
+                web3FormData.append('screenshotUploadStatus', 'not_required');
+
+                await helpers.submitToWeb3Forms(web3FormData);
+            }
+
             window.updateSmaPaymentInstructions = function () {
                 var instructionEl = document.getElementById('sma-payment-instructions');
                 var serviceDisplay = document.getElementById('sma-selected-service-display');
-                var selectedService = document.getElementById('pay-service').value.trim();
                 if (!instructionEl) return;
                 if (serviceDisplay) {
-                    serviceDisplay.textContent = selectedService || 'Social Media Analysis';
-                }
-
-                if (selectedService === 'Free Social Media Analysis') {
-                    instructionEl.innerHTML = '<p class="payment-instruction-lead">Free analysis does not require payment. Submit your details below.</p>';
-                    return;
+                    serviceDisplay.textContent = selectedServiceName;
                 }
 
                 instructionEl.innerHTML = '<p class="payment-instruction-lead">Pay using UPI before submitting payment details.</p><div class="payment-info-row"><span>UPI ID</span><strong>9899812449@jupiteraxis</strong></div><div class="payment-info-row"><span>Amount</span><strong>₹499 / ₹799 as confirmed</strong></div>';
+            };
+
+            window.smaAnalysisFlow = {
+                isPremium: isPremium,
+                selectedServiceName: selectedServiceName,
+                planType: planType,
+                isValidEmail: isValidEmail,
+                saveQuestionnaireAnswers: saveQuestionnaireAnswers,
+                setButtonLoading: setButtonLoading,
+                setFreeSubmitMessage: setFreeSubmitMessage,
+                submitFreeAnalysis: submitFreeAnalysis
             };
 
             document.getElementById('sma-form').addEventListener('submit', function () {
@@ -445,6 +519,9 @@
             document.getElementById('payment-form').addEventListener('submit', async function (event) {
                 event.preventDefault();
                 event.stopImmediatePropagation();
+                if (!isPremium) {
+                    return;
+                }
 
                 var valid = true;
                 setSubmitMessage('');
@@ -460,15 +537,8 @@
                 checkPay('pay-email', 'err-pay-email', function (el) {
                     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim());
                 });
-                var selectedService = document.getElementById('pay-service').value.trim();
-                var isFreeAnalysis = selectedService === 'Free Social Media Analysis';
-                if (!isFreeAnalysis) {
-                    checkPay('pay-method', 'err-pay-method');
-                    checkPay('pay-txn', 'err-pay-txn');
-                } else {
-                    document.getElementById('err-pay-method').classList.remove('visible');
-                    document.getElementById('err-pay-txn').classList.remove('visible');
-                }
+                checkPay('pay-method', 'err-pay-method');
+                checkPay('pay-txn', 'err-pay-txn');
 
                 if (!valid) return;
                 if (!questionnaireAnswers.nicheTopic && isStepOneValid()) {
@@ -499,21 +569,20 @@
 
                     var web3FormData = new FormData();
                     web3FormData.append('access_key', WEB3FORMS_ACCESS_KEY);
-                    web3FormData.append('subject', 'Dynamic Bubble - Social Media Analysis Submission');
+                    web3FormData.append('subject', 'Premium Social Media Analysis Submission');
                     web3FormData.append('from_name', 'Dynamic Bubble Website');
                     web3FormData.append('submittedAt', new Date().toISOString());
                     web3FormData.append('pageSource', 'pages/social-media-analysis.html');
-                    web3FormData.append('selectedService', selectedService);
-                    web3FormData.append('serviceSelected', selectedService);
+                    web3FormData.append('selectedService', 'Premium Social Media Analysis');
+                    web3FormData.append('planType', 'premium');
+                    web3FormData.append('paymentRequired', 'yes');
 
-                    Object.keys(questionnaireAnswers).forEach(function (key) {
-                        web3FormData.append(key, questionnaireAnswers[key]);
-                    });
+                    appendQuestionnaireData(web3FormData);
 
                     web3FormData.append('fullName', document.getElementById('pay-name').value.trim());
                     web3FormData.append('email', document.getElementById('pay-email').value.trim());
-                    web3FormData.append('paymentMethod', isFreeAnalysis && !document.getElementById('pay-method').value.trim() ? 'Not required' : document.getElementById('pay-method').value.trim());
-                    web3FormData.append('transactionId', isFreeAnalysis && !transactionId ? 'Not required' : transactionId);
+                    web3FormData.append('paymentMethod', document.getElementById('pay-method').value.trim());
+                    web3FormData.append('transactionId', transactionId);
                     web3FormData.append('proofFileName', proofFileName);
                     web3FormData.append('screenshotUrl', screenshotUrl);
                     web3FormData.append('screenshotUploadStatus', screenshotUploadStatus);
@@ -539,27 +608,38 @@
     <script>
         // ── Plan detection from URL ──────────────────────────────────────────
         (function () {
-            const params = new URLSearchParams(window.location.search);
-            const plan = params.get('plan');
+            const flow = window.smaAnalysisFlow;
+            const isPremium = flow && flow.isPremium;
             const serviceField = document.getElementById('pay-service');
-            if (plan === 'free') {
-                serviceField.value = 'Free Social Media Analysis';
-                document.title = 'Free Social Media Analysis | Dynamic Bubble';
-            } else if (plan === 'premium') {
-                serviceField.value = 'Premium Social Media Analysis';
+            const pageTitle = document.getElementById('sma-page-title');
+            const submitButton = document.getElementById('sma-submit-btn');
+
+            document.body.classList.add(isPremium ? 'sma-premium' : 'sma-free');
+            serviceField.value = isPremium ? 'Premium Social Media Analysis' : 'Free Social Media Analysis';
+
+            if (isPremium) {
                 document.title = 'Premium Social Media Analysis | Dynamic Bubble';
+                pageTitle.textContent = 'Premium Social Media Analysis';
+                submitButton.textContent = 'Continue to Next Step';
+                if (window.updateSmaPaymentInstructions) {
+                    window.updateSmaPaymentInstructions();
+                }
             } else {
-                serviceField.value = 'Social Media Analysis';
-            }
-            if (window.updateSmaPaymentInstructions) {
-                window.updateSmaPaymentInstructions();
+                document.title = 'Free Social Media Analysis | Dynamic Bubble';
+                pageTitle.textContent = 'Free Social Media Analysis';
+                submitButton.textContent = 'Submit Free Analysis Request';
             }
         })();
 
         // ── Questionnaire form validation & step reveal ──────────────────────
-        document.getElementById('sma-form').addEventListener('submit', function (e) {
+        document.getElementById('sma-form').addEventListener('submit', async function (e) {
             e.preventDefault();
+            var flow = window.smaAnalysisFlow;
+            var submitButton = document.getElementById('sma-submit-btn');
             var valid = true;
+            if (flow) {
+                flow.setFreeSubmitMessage('');
+            }
 
             function check(id, errId, condition) {
                 var el = document.getElementById(id);
@@ -585,10 +665,42 @@
             document.getElementById('err-challenges').classList.toggle('visible', !anyChecked);
             if (!anyChecked) valid = false;
 
+            if (flow && !flow.isPremium) {
+                check('free-name', 'err-free-name');
+                check('free-email', 'err-free-email', function (el) {
+                    return flow.isValidEmail(el.value);
+                });
+            }
+
             if (!valid) return;
 
-            // Success: hide form, show banner + payment section
+            if (flow) {
+                flow.saveQuestionnaireAnswers();
+            }
+
+            if (flow && !flow.isPremium) {
+                var submissionSucceeded = false;
+                flow.setButtonLoading(submitButton, true, 'Submitting...');
+                try {
+                    await flow.submitFreeAnalysis();
+                    submissionSucceeded = true;
+                    document.getElementById('questionnaire-section').style.display = 'none';
+                    document.getElementById('sma-success-banner').innerHTML = "<div class=\"sma-success-banner\">Your free analysis request has been received. We'll review your account and contact you soon.</div>";
+                    document.getElementById('sma-success-banner').style.display = 'block';
+                    document.getElementById('payment-section').classList.remove('visible');
+                } catch (error) {
+                    flow.setFreeSubmitMessage(error.message || 'Submission failed. Please try again.');
+                } finally {
+                    if (!submissionSucceeded) {
+                        flow.setButtonLoading(submitButton, false);
+                    }
+                }
+                return;
+            }
+
+            // Premium success: hide questionnaire, show banner + payment section
             document.getElementById('questionnaire-section').style.display = 'none';
+            document.getElementById('sma-success-banner').innerHTML = '<div class="sma-success-banner">Thanks for sharing your details. Please complete the next step below.</div>';
             document.getElementById('sma-success-banner').style.display = 'block';
             document.getElementById('payment-form').style.display = 'block';
             document.getElementById('pay-success').style.display = 'none';
