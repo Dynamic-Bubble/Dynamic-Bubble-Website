@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Read Dynamic Bubble's Privacy Policy to understand how we collect, use, and protect information submitted through our website and enquiry forms.">
+    <meta name="author" content="Dynamic Bubble">
+    <title>Privacy Policy | Dynamic Bubble</title>
+    <link rel="icon" type="image/png" href="../assets/images/dynamic_bubble_logo.jpg">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <link rel="stylesheet" href="../css/card-nav.css">
+    <link rel="stylesheet" href="../css/text-type.css">
+    <link rel="stylesheet" href="../css/laser-theme.css">
+    <style>
+        .legal-hero {
+            background: linear-gradient(135deg, #1E1B4B 0%, #7C3AED 100%);
+            color: var(--color-white);
+            padding: 9rem 0 4.5rem;
+        }
+
+        .legal-hero .container {
+            max-width: 980px;
+        }
+
+        .legal-eyebrow {
+            color: var(--color-primary-light);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .legal-hero h1 {
+            color: var(--color-white);
+            font-size: clamp(2.25rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+        }
+
+        .legal-hero p {
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            max-width: 760px;
+        }
+
+        .legal-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.75rem;
+        }
+
+        .legal-meta span {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 999px;
+            color: var(--color-white);
+            font-size: 0.9rem;
+            padding: 0.55rem 0.9rem;
+        }
+
+        .legal-container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        .legal-layout {
+            align-items: start;
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: 250px minmax(0, 1fr);
+        }
+
+        .legal-toc,
+        .legal-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .legal-toc {
+            padding: 1.25rem;
+            position: sticky;
+            top: 7rem;
+        }
+
+        .legal-toc h2 {
+            color: var(--color-text-dark);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .legal-toc a {
+            border-left: 3px solid transparent;
+            color: var(--color-text-medium);
+            display: block;
+            font-size: 0.9rem;
+            line-height: 1.45;
+            padding: 0.45rem 0 0.45rem 0.75rem;
+        }
+
+        .legal-toc a:hover {
+            border-left-color: var(--color-primary);
+            color: var(--color-primary-dark);
+        }
+
+        .legal-content {
+            min-width: 0;
+        }
+
+        .legal-card {
+            border-left: 5px solid var(--color-primary);
+            margin-bottom: 1.5rem;
+            padding: clamp(1.25rem, 3vw, 2rem);
+        }
+
+        .legal-section {
+            scroll-margin-top: 7rem;
+        }
+
+        .legal-section h2 {
+            color: var(--color-text-dark);
+            font-size: clamp(1.25rem, 3vw, 1.65rem);
+            margin-bottom: 1rem;
+        }
+
+        .legal-section p,
+        .legal-section li,
+        .legal-section td,
+        .legal-section th {
+            color: var(--color-text-medium);
+            line-height: 1.8;
+        }
+
+        .legal-section ul,
+        .legal-section ol {
+            margin: 0.75rem 0 0;
+            padding-left: 1.35rem;
+        }
+
+        .legal-section li {
+            margin-bottom: 0.55rem;
+        }
+
+        .legal-table-wrap {
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .legal-table {
+            border-collapse: collapse;
+            min-width: 640px;
+            width: 100%;
+        }
+
+        .legal-table th,
+        .legal-table td {
+            border: 1px solid var(--color-border);
+            padding: 0.85rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .legal-table th {
+            background: var(--color-bg-alt);
+            color: var(--color-text-dark);
+            font-weight: 700;
+        }
+
+        .legal-note {
+            background: var(--color-bg-alt);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            color: var(--color-text-medium);
+            margin-top: 1rem;
+            padding: 1rem;
+        }
+
+        .legal-contact-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            margin-top: 1.25rem;
+        }
+
+        .legal-contact-item {
+            background: var(--color-bg-alt);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+        }
+
+        .legal-contact-item strong {
+            color: var(--color-text-dark);
+            display: block;
+            font-size: 0.85rem;
+            margin-bottom: 0.35rem;
+        }
+
+        @media (max-width: 860px) {
+            .legal-hero {
+                padding: 7rem 0 3rem;
+            }
+
+            .legal-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .legal-toc {
+                position: static;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .legal-container {
+                padding: 3rem 1rem;
+            }
+
+            .legal-contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card-nav-container">
+        <nav class="card-nav">
+            <div class="card-nav-top">
+                <div class="hamburger-menu" role="button" aria-label="Toggle menu" tabindex="0">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </div>
+
+                <div class="logo-container">
+                    <a href="../index.html">
+                        <img src="../assets/images/dynamic_bubble_logo.jpg" alt="Dynamic Bubble" class="logo">
+                    </a>
+                </div>
+
+                <a href="mailto:dynamicbubbleinfo@gmail.com" class="card-nav-cta-button">
+                    Email Us
+                </a>
+            </div>
+
+            <div class="card-nav-content">
+                <div class="nav-card" style="background-color: #0D0716; color: #fff;">
+                    <div class="nav-card-label">Explore</div>
+                    <div class="nav-card-links">
+                        <a class="nav-card-link" href="../index.html" aria-label="Home">
+                            <svg class="nav-card-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                                </path>
+                            </svg>
+                            Home
+                        </a>
+                        <a class="nav-card-link" href="about.html" aria-label="About Us">
+                            <svg class="nav-card-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            About Us
+                        </a>
+                        <a class="nav-card-link" href="services.html" aria-label="Services">
+                            <svg class="nav-card-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                                </path>
+                            </svg>
+                            Services
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-card" style="background-color: #271E37; color: #fff;">
+                    <div class="nav-card-label">Connect</div>
+                    <div class="nav-card-links">
+                        <a class="nav-card-link" href="mailto:dynamicbubbleinfo@gmail.com" aria-label="Email">
+                            <svg class="nav-card-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                            Email
+                        </a>
+                        <a class="nav-card-link" href="https://www.linkedin.com/company/dynamic-bubble/"
+                            target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <svg class="nav-card-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z">
+                                </path>
+                            </svg>
+                            LinkedIn
+                        </a>
+                        <a class="nav-card-link" href="https://www.instagram.com/dynamic_bubble" target="_blank"
+                            rel="noopener noreferrer" aria-label="Instagram">
+                            <svg class="nav-card-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"></rect>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="2"
+                                    stroke-linecap="round"></line>
+                            </svg>
+                            Instagram
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <header class="legal-hero">
+        <div class="container">
+            <div class="legal-eyebrow">dynamicbubble.agency</div>
+            <h1>Privacy Policy</h1>
+            <p>We respect your privacy. This policy explains what information we collect when you visit our website or
+                reach out to us, how we use it, and how we protect it.</p>
+            <div class="legal-meta">
+                <span>Effective Date: April 1st 2026</span>
+                <span>Legal Entity: Dynamic Bubble</span>
+                <span>Location: Mumbai, Maharashtra, India</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="legal-container">
+        <div class="legal-layout">
+            <aside class="legal-toc" aria-label="Table of contents">
+                <h2>Contents</h2>
+                <a href="#introduction">1. Introduction &amp; Scope</a>
+                <a href="#information">2. Information We Collect</a>
+                <a href="#collection">3. How We Collect Information</a>
+                <a href="#use">4. How We Use Your Information</a>
+                <a href="#basis">5. Legal Basis &amp; Consent</a>
+                <a href="#cookies">6. Cookies &amp; Analytics</a>
+                <a href="#sharing">7. Sharing Your Information</a>
+                <a href="#retention">8. Data Retention</a>
+                <a href="#security">9. Data Security</a>
+                <a href="#rights">10. Your Rights</a>
+                <a href="#third-party">11. Third-Party Links</a>
+                <a href="#children">12. Children's Privacy</a>
+                <a href="#cross-border">13. Cross-Border Processing</a>
+                <a href="#updates">14. Policy Updates</a>
+                <a href="#contact">15. Contact Us</a>
+            </aside>
+
+            <article class="legal-content">
+                <section class="legal-card legal-section">
+                    <p>This Privacy Policy describes how Dynamic Bubble collects, uses, stores, and protects
+                        information relating to visitors of our website at <strong>dynamicbubble.agency</strong> and
+                        individuals who contact us through it.</p>
+                    <p>This Policy is effective as of April 1st 2026. By using this Website or submitting your
+                        information through any form on it, you acknowledge that you have read and understood this
+                        Policy.</p>
+                </section>
+
+                <section class="legal-card legal-section" id="introduction">
+                    <h2>1. Introduction &amp; Scope</h2>
+                    <p>Dynamic Bubble is a digital marketing agency based in India, serving founders, creators,
+                        startups, and growing brands. This Website is used to communicate our services, share
+                        information about our work, and invite potential clients to get in touch.</p>
+                    <p>This Policy applies to all visitors who browse this Website, individuals who submit information
+                        through contact, enquiry, or consultation request forms, and anyone who communicates with us
+                        through the contact details listed on this Website.</p>
+                    <p>This Policy does not apply to information collected under a separate client service agreement. If
+                        you are an existing client, your data handling may be governed by additional contractual terms
+                        agreed between us.</p>
+                    <p>We are the data controller in respect of the information described in this Policy, meaning we
+                        determine how and why your personal information is processed.</p>
+                </section>
+
+                <section class="legal-card legal-section" id="information">
+                    <h2>2. Information We Collect</h2>
+                    <p>We collect two broad categories of information: information you provide to us voluntarily, and
+                        information collected automatically when you use this Website.</p>
+                    <div class="legal-table-wrap">
+                        <table class="legal-table">
+                            <thead>
+                                <tr>
+                                    <th>Information</th>
+                                    <th>Category</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Full name</td>
+                                    <td>Form or direct</td>
+                                    <td>Provided by you through enquiry forms.</td>
+                                </tr>
+                                <tr>
+                                    <td>Email address</td>
+                                    <td>Form or direct</td>
+                                    <td>Primary channel for follow-up communication.</td>
+                                </tr>
+                                <tr>
+                                    <td>Company or business name</td>
+                                    <td>Form or direct</td>
+                                    <td>Helps us understand your business context.</td>
+                                </tr>
+                                <tr>
+                                    <td>Website URL</td>
+                                    <td>Form or direct</td>
+                                    <td>Optional context that may help us prepare for discussions.</td>
+                                </tr>
+                                <tr>
+                                    <td>Service interest or enquiry type</td>
+                                    <td>Form or direct</td>
+                                    <td>What you are looking to discuss.</td>
+                                </tr>
+                                <tr>
+                                    <td>Project details or message</td>
+                                    <td>Form or direct</td>
+                                    <td>Free-text information submitted through forms.</td>
+                                </tr>
+                                <tr>
+                                    <td>IP address, browser, device, pages visited, referral source, and cookie data</td>
+                                    <td>Automatic</td>
+                                    <td>Collected by hosting or analytics systems to operate and improve the Website.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>We do not knowingly collect sensitive personal data such as financial details, government-issued
+                        identity numbers, health information, or payment card data through this Website.</p>
+                </section>
+
+                <section class="legal-card legal-section" id="collection">
+                    <h2>3. How We Collect Information</h2>
+                    <p>We collect information through contact and enquiry forms, direct email communication, cookies and
+                        similar technologies, analytics tools, and routine hosting logs generated through ordinary
+                        website usage.</p>
+                    <ol>
+                        <li><strong>Contact and enquiry forms:</strong> When you fill out a form on this Website, you
+                            directly provide the information included in that submission.</li>
+                        <li><strong>Direct communication:</strong> If you email us or reach out through a contact detail
+                            listed on this Website, we receive and retain the information you share in that
+                            communication.</li>
+                        <li><strong>Cookies and tracking technologies:</strong> Cookies and similar technologies may
+                            automatically collect technical and behavioural data about your session.</li>
+                        <li><strong>Analytics tools:</strong> Third-party analytics services may collect data such as
+                            pages visited, time spent, and traffic sources in aggregated or pseudonymous form.</li>
+                        <li><strong>Ordinary website usage:</strong> Our hosting infrastructure logs routine access data
+                            including IP addresses and request metadata.</li>
+                    </ol>
+                </section>
+
+                <section class="legal-card legal-section" id="use">
+                    <h2>4. How We Use Your Information</h2>
+                    <p>We use the information we collect to respond to enquiries, prepare for consultations and
+                        proposals, communicate about services, improve the Website, analyse website traffic and enquiry
+                        volumes, prevent misuse or spam, and comply with applicable Indian laws.</p>
+                    <div class="legal-note">
+                        We do not sell, rent, or trade your personal information to third parties for advertising
+                        purposes. Your enquiry details are used to communicate with you about your interest in Dynamic
+                        Bubble's services.
+                    </div>
+                </section>
+
+                <section class="legal-card legal-section" id="basis">
+                    <h2>5. Legal Basis &amp; Consent</h2>
+                    <p>We process your personal information based on your consent when you submit an enquiry form,
+                        legitimate interests such as website security and aggregate analytics, and legal obligations
+                        where applicable under Indian law.</p>
+                    <p>You may withdraw consent by contacting us at
+                        <a href="mailto:dynamicbubbleinfo@gmail.com">dynamicbubbleinfo@gmail.com</a>. Withdrawal of
+                        consent will not affect processing already carried out before withdrawal.</p>
+                    <p>India's data protection framework continues to evolve. We commit to handling personal data
+                        responsibly and in a manner consistent with applicable Indian legislation, including the
+                        Information Technology Act, 2000 and its associated rules, as well as any data protection rules
+                        that may come into force.</p>
+                </section>
+
+                <section class="legal-card legal-section" id="cookies">
+                    <h2>6. Cookies &amp; Analytics</h2>
+                    <p>This Website may use cookies and similar technologies to enhance browsing, understand usage
+                        patterns, and support analytics.</p>
+                    <ul>
+                        <li><strong>Essential or functional cookies:</strong> Necessary for basic operation of the
+                            Website.</li>
+                        <li><strong>Analytics cookies:</strong> Used by analytics services to understand pages visited,
+                            session duration, and traffic sources, typically in aggregated or anonymised form.</li>
+                        <li><strong>Preference cookies:</strong> Used to remember settings or choices where applicable.
+                        </li>
+                    </ul>
+                    <p>We do not currently use advertising or retargeting cookies to serve ads on other websites based
+                        on your visit to this Website. You can control or disable cookies through your browser settings
+                        at any time.</p>
+                </section>
+
+                <section class="legal-card legal-section" id="sharing">
+                    <h2>7. Sharing Your Information</h2>
+                    <p>We do not share your personal information with outside parties except in limited circumstances
+                        and only to the extent reasonably necessary for the stated purpose.</p>
+                    <ul>
+                        <li>Trusted service providers such as email tools, CRM software, hosting providers, and
+                            analytics services.</li>
+                        <li>Professional advisors where required to obtain legal, accounting, or compliance advice.</li>
+                        <li>Legal and regulatory authorities if required by law, court order, or a competent Indian
+                            governmental or regulatory authority.</li>
+                        <li>A successor entity in the event of merger, acquisition, or transfer of business assets.</li>
+                    </ul>
+                    <p>We do not sell, licence, or share personal data with advertisers, data brokers, or unrelated
+                        third parties for commercial gain.</p>
+                </section>
+
+                <section class="legal-card legal-section" id="retention">
+                    <h2>8. Data Retention</h2>
+                    <p>We retain personal information only for as long as reasonably necessary for the purpose for which
+                        it was collected, or as required by applicable law.</p>
+                    <ul>
+                        <li>Enquiry and form data is retained during the pre-engagement process and for a reasonable
+                            period thereafter to maintain business communication records.</li>
+                        <li>Aggregated and anonymised analytics data may be retained for longer periods because it does
+                            not identify individual users.</li>
+                        <li>Certain records may be retained where required by Indian law or for resolving disputes or
+                            enforcing agreements.</li>
+                    </ul>
+                    <p>Once data is no longer needed and no legal retention obligation applies, we take reasonable steps
+                        to delete or anonymise it securely.</p>
+                </section>
+
+                <section class="legal-card legal-section" id="security">
+                    <h2>9. Data Security</h2>
+                    <p>We apply reasonable technical and organisational measures to protect personal information against
+                        unauthorised access, accidental loss, alteration, or disclosure.</p>
+                    <ul>
+                        <li>Use of HTTPS encryption on this Website.</li>
+                        <li>Access controls limiting who can view submitted enquiry data within our team.</li>
+                        <li>Use of reputable third-party platforms with their own security standards.</li>
+                        <li>Regular review of how data is stored and processed.</li>
+                    </ul>
+                    <p>No method of data transmission over the internet or electronic storage is completely secure. You
+                        share information with us at your own risk, and we encourage you not to submit highly sensitive
+                        personal or financial data through website forms.</p>
+                </section>
+
+                <section class="legal-card legal-section" id="rights">
+                    <h2>10. Your Rights</h2>
+                    <p>Subject to applicable Indian law and our legitimate operational needs, you may contact us to
+                        request access, correction, withdrawal of consent, deletion, or objection to certain processing
+                        of your personal information.</p>
+                    <p>To exercise these rights, write to
+                        <a href="mailto:dynamicbubbleinfo@gmail.com">dynamicbubbleinfo@gmail.com</a> with a clear
+                        description of your request. We may need to verify your identity before processing the request.
+                    </p>
+                </section>
+
+                <section class="legal-card legal-section" id="third-party">
+                    <h2>11. Third-Party Links &amp; Embedded Services</h2>
+                    <p>This Website may contain links to external websites, social media platforms, or embedded content
+                        from third-party services. When you click external links or interact with embedded content, you
+                        leave our privacy environment.</p>
+                    <p>We are not responsible for the privacy practices, content, or data handling of third-party
+                        websites or services. We encourage you to review the privacy policies of external services you
+                        interact with.</p>
+                </section>
+
+                <section class="legal-card legal-section" id="children">
+                    <h2>12. Children's Privacy</h2>
+                    <p>This Website is intended for adults and business professionals. It is not designed for, directed
+                        at, or intended to be used by children under the age of 18.</p>
+                    <p>We do not knowingly collect, process, or store personal information from individuals under the
+                        age of 18. If a minor has submitted personal information through this Website, contact us at
+                        <a href="mailto:dynamicbubbleinfo@gmail.com">dynamicbubbleinfo@gmail.com</a> and we will take
+                        prompt steps to delete that information.</p>
+                </section>
+
+                <section class="legal-card legal-section" id="cross-border">
+                    <h2>13. Cross-Border Processing</h2>
+                    <p>Dynamic Bubble is based in India. Some third-party tools and platforms we use to operate this
+                        Website, including analytics services, email communication tools, and hosting providers, may
+                        store or process data on servers located outside India.</p>
+                    <p>By using this Website and submitting your information, you acknowledge that your data may be
+                        processed outside India in countries whose data protection laws may differ from those applicable
+                        in India.</p>
+                    <p>Where we use third-party processors who operate across borders, we rely on the privacy and data
+                        handling commitments set out in their own terms of service and privacy policies.</p>
+                </section>
+
+                <section class="legal-card legal-section" id="updates">
+                    <h2>14. Policy Updates</h2>
+                    <p>We may update this Privacy Policy from time to time to reflect changes in our practices, the
+                        services we offer, the tools we use, or changes in applicable law. When we make updates, we will
+                        revise the effective date at the top of this Policy.</p>
+                    <p>Your continued use of this Website following updates constitutes your acknowledgement of the
+                        revised Policy. If you do not agree with any changes, discontinue use of this Website and
+                        contact us if you wish to request deletion of previously submitted data.</p>
+                </section>
+
+                <section class="legal-card legal-section" id="contact">
+                    <h2>15. Contact Us</h2>
+                    <p>If you have any questions, concerns, or requests relating to this Privacy Policy or how your
+                        personal information is handled, please reach out to us using the details below.</p>
+                    <div class="legal-contact-grid">
+                        <div class="legal-contact-item">
+                            <strong>Legal Entity</strong>
+                            <span>Dynamic Bubble</span>
+                        </div>
+                        <div class="legal-contact-item">
+                            <strong>Location</strong>
+                            <span>Mumbai, Maharashtra, India</span>
+                        </div>
+                        <div class="legal-contact-item">
+                            <strong>Privacy / Data Queries Email</strong>
+                            <a href="mailto:dynamicbubbleinfo@gmail.com">dynamicbubbleinfo@gmail.com</a>
+                        </div>
+                        <div class="legal-contact-item">
+                            <strong>Website</strong>
+                            <a href="https://dynamicbubble.agency" target="_blank"
+                                rel="noopener noreferrer">dynamicbubble.agency</a>
+                        </div>
+                        <div class="legal-contact-item">
+                            <strong>Effective Date</strong>
+                            <span>April 1st 2026</span>
+                        </div>
+                        <div class="legal-contact-item">
+                            <strong>Related Page</strong>
+                            <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </section>
+            </article>
+        </div>
+    </main>
+
+    <footer class="footer" id="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Dynamic Bubble</h4>
+                    <p>Transforming startups into market leaders through exceptional design, development, and marketing.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html#web-development">Web Development</a></li>
+                        <li><a href="services.html#social-media">Social Media Management</a></li>
+                        <li><a href="services.html#digital-marketing">Digital Marketing</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-and-conditions.html">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Get In Touch</h4>
+                    <ul class="footer-links">
+                        <li class="footer-map">
+                            <a class="footer-map-link"
+                                href="https://www.google.com/maps/place/Malad,+Mumbai,+Maharashtra,+India"
+                                target="_blank" rel="noopener noreferrer"
+                                aria-label="Open Malad, Mumbai in Google Maps">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"
+                                    aria-hidden="true" focusable="false">
+                                    <path
+                                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5 14.5 7.62 14.5 9 13.38 11.5 12 11.5z" />
+                                </svg>
+                                <span class="footer-location">Malad, Mumbai</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="footer-social">
+                        <a href="https://www.linkedin.com/company/dynamic-bubble/" class="social-link"
+                            aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/dynamic_bubble" class="social-link"
+                            aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z" />
+                            </svg>
+                        </a>
+                        <a href="mailto:dynamicbubbleinfo@gmail.com" class="social-link" aria-label="Email">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.89 2 1.99 2H20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="copyright-year">2026</span> Dynamic Bubble. Developed with love.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/card-nav.js"></script>
+    <script src="../js/text-type.js"></script>
+</body>
+
+</html>

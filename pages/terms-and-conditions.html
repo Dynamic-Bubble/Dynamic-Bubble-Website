@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Read Dynamic Bubble's Terms & Conditions for website usage, service information, enquiry submissions, limitations, and legal terms.">
+    <meta name="author" content="Dynamic Bubble">
+    <title>Terms &amp; Conditions | Dynamic Bubble</title>
+    <link rel="icon" type="image/png" href="../assets/images/dynamic_bubble_logo.jpg">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <link rel="stylesheet" href="../css/card-nav.css">
+    <link rel="stylesheet" href="../css/text-type.css">
+    <link rel="stylesheet" href="../css/laser-theme.css">
+    <style>
+        .legal-hero {
+            background: linear-gradient(135deg, #1E1B4B 0%, #7C3AED 100%);
+            color: var(--color-white);
+            padding: 9rem 0 4.5rem;
+        }
+
+        .legal-hero .container {
+            max-width: 980px;
+        }
+
+        .legal-eyebrow {
+            color: var(--color-primary-light);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .legal-hero h1 {
+            color: var(--color-white);
+            font-size: clamp(2.25rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+        }
+
+        .legal-hero p {
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            max-width: 760px;
+        }
+
+        .legal-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.75rem;
+        }
+
+        .legal-meta span {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 999px;
+            color: var(--color-white);
+            font-size: 0.9rem;
+            padding: 0.55rem 0.9rem;
+        }
+
+        .legal-container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        .legal-layout {
+            align-items: start;
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: 250px minmax(0, 1fr);
+        }
+
+        .legal-toc,
+        .legal-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .legal-toc {
+            padding: 1.25rem;
+            position: sticky;
+            top: 7rem;
+        }
+
+        .legal-toc h2 {
+            color: var(--color-text-dark);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .legal-toc a {
+            border-left: 3px solid transparent;
+            color: var(--color-text-medium);
+            display: block;
+            font-size: 0.9rem;
+            line-height: 1.45;
+            padding: 0.45rem 0 0.45rem 0.75rem;
+        }
+
+        .legal-toc a:hover {
+            border-left-color: var(--color-primary);
+            color: var(--color-primary-dark);
+        }
+
+        .legal-content {
+            min-width: 0;
+        }
+
+        .legal-card {
+            border-left: 5px solid var(--color-primary);
+            margin-bottom: 1.5rem;
+            padding: clamp(1.25rem, 3vw, 2rem);
+        }
+
+        .legal-section {
+            scroll-margin-top: 7rem;
+        }
+
+        .legal-section h2 {
+            color: var(--color-text-dark);
+            font-size: clamp(1.25rem, 3vw, 1.65rem);
+            margin-bottom: 1rem;
+        }
+
+        .legal-section p,
+        .legal-section li {
+            color: var(--color-text-medium);
+            line-height: 1.8;
+        }
+
+        .legal-section ul,
+        .legal-section ol {
+            margin: 0.75rem 0 0;
+            padding-left: 1.35rem;
+        }
+
+        .legal-section li {
+            margin-bottom: 0.55rem;
+        }
+
+        .legal-note {
+            background: var(--color-bg-alt);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            color: var(--color-text-medium);
+            margin-top: 1rem;
+            padding: 1rem;
+        }
+
+        .legal-contact-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            margin-top: 1.25rem;
+        }
+
+        .legal-contact-item {
+            background: var(--color-bg-alt);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+        }
+
+        .legal-contact-item strong {
+            color: var(--color-text-dark);
+            display: block;
+            font-size: 0.85rem;
+            margin-bottom: 0.35rem;
+        }
+
+        @media (max-width: 860px) {
+            .legal-hero {
+                padding: 7rem 0 3rem;
+            }
+
+            .legal-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .legal-toc {
+                position: static;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .legal-container {
+                padding: 3rem 1rem;
+            }
+
+            .legal-contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card-nav-container">
+        <nav class="card-nav">
+            <div class="card-nav-top">
+                <div class="hamburger-menu" role="button" aria-label="Toggle menu" tabindex="0">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </div>
+
+                <div class="logo-container">
+                    <a href="../index.html">
+                        <img src="../assets/images/dynamic_bubble_logo.jpg" alt="Dynamic Bubble" class="logo">
+                    </a>
+                </div>
+
+                <a href="mailto:dynamicbubbleinfo@gmail.com" class="card-nav-cta-button">
+                    Email Us
+                </a>
+            </div>
+
+            <div class="card-nav-content">
+                <div class="nav-card" style="background-color: #0D0716; color: #fff;">
+                    <div class="nav-card-label">Explore</div>
+                    <div class="nav-card-links">
+                        <a class="nav-card-link" href="../index.html" aria-label="Home">
+                            <svg class="nav-card-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                                </path>
+                            </svg>
+                            Home
+                        </a>
+                        <a class="nav-card-link" href="about.html" aria-label="About Us">
+                            <svg class="nav-card-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            About Us
+                        </a>
+                        <a class="nav-card-link" href="services.html" aria-label="Services">
+                            <svg class="nav-card-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                                </path>
+                            </svg>
+                            Services
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-card" style="background-color: #271E37; color: #fff;">
+                    <div class="nav-card-label">Connect</div>
+                    <div class="nav-card-links">
+                        <a class="nav-card-link" href="mailto:dynamicbubbleinfo@gmail.com" aria-label="Email">
+                            <svg class="nav-card-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                            Email
+                        </a>
+                        <a class="nav-card-link" href="https://www.linkedin.com/company/dynamic-bubble/"
+                            target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <svg class="nav-card-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z">
+                                </path>
+                            </svg>
+                            LinkedIn
+                        </a>
+                        <a class="nav-card-link" href="https://www.instagram.com/dynamic_bubble" target="_blank"
+                            rel="noopener noreferrer" aria-label="Instagram">
+                            <svg class="nav-card-link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"></rect>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="2"
+                                    stroke-linecap="round"></line>
+                            </svg>
+                            Instagram
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <header class="legal-hero">
+        <div class="container">
+            <div class="legal-eyebrow">dynamicbubble.agency</div>
+            <h1>Terms &amp; Conditions</h1>
+            <p>Please read these terms carefully before using this Website. By accessing, browsing, or submitting an
+                enquiry, you confirm that you have read, understood, and agree to these terms.</p>
+            <div class="legal-meta">
+                <span>Effective Date: April 1st 2026</span>
+                <span>Legal Entity: Dynamic Bubble</span>
+                <span>Jurisdiction: Mumbai, Maharashtra</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="legal-container">
+        <div class="legal-layout">
+            <aside class="legal-toc" aria-label="Table of contents">
+                <h2>Contents</h2>
+                <a href="#acceptance">1. Acceptance of Terms</a>
+                <a href="#purpose">2. Website Purpose</a>
+                <a href="#services">3. Services Disclaimer</a>
+                <a href="#enquiry">4. Enquiry Submissions</a>
+                <a href="#results">5. No Results Guarantee</a>
+                <a href="#proposals">6. Proposals &amp; Agreements</a>
+                <a href="#ip">7. Intellectual Property</a>
+                <a href="#use">8. Permitted &amp; Prohibited Use</a>
+                <a href="#third-party">9. Third-Party Links</a>
+                <a href="#liability">10. Limitation of Liability</a>
+                <a href="#indemnity">11. Indemnity</a>
+                <a href="#privacy">12. Privacy &amp; Data</a>
+                <a href="#termination">13. Restriction of Access</a>
+                <a href="#law">14. Governing Law</a>
+                <a href="#contact">15. Contact Us</a>
+            </aside>
+
+            <article class="legal-content">
+                <section class="legal-card legal-section">
+                    <p>These Terms and Conditions govern your access to and use of the website located at
+                        <strong>dynamicbubble.agency</strong>, operated by Dynamic Bubble. In these Terms, Dynamic
+                        Bubble may be referred to as "we", "us", or "our".</p>
+                </section>
+
+                <section class="legal-card legal-section" id="acceptance">
+                    <h2>1. Acceptance of Terms</h2>
+                    <p>By accessing or using this Website in any manner, including browsing content, submitting an
+                        enquiry form, or contacting us through any channel listed on this Website, you agree to be
+                        legally bound by these Terms and all applicable laws and regulations of India.</p>
+                    <p>If you do not agree with any part of these Terms, you must discontinue your use of this Website.
+                        These Terms apply to all visitors, potential clients, and any other persons who access or use
+                        the Website.</p>
+                    <p>We reserve the right to update or modify these Terms at any time. The revised Terms will be
+                        posted on this page with an updated effective date. Your continued use of the Website after
+                        changes constitutes acceptance of the revised Terms.</p>
+                </section>
+
+                <section class="legal-card legal-section" id="purpose">
+                    <h2>2. Website Purpose &amp; Informational Use</h2>
+                    <p>This Website is operated for informational and lead-generation purposes only. Content published on
+                        this Website, including service descriptions, case study references, blog posts, testimonials,
+                        statistics, and other materials, is provided to communicate the general scope of Dynamic
+                        Bubble's capabilities and facilitate enquiries from prospective clients.</p>
+                    <p>Nothing on this Website constitutes professional advice of any kind, including legal, financial,
+                        technical, or marketing advice specific to your business. Any general information provided is for
+                        illustrative purposes only and should not replace independent professional consultation.</p>
+                    <p>We make reasonable efforts to keep Website content accurate and up to date, but we do not warrant
+                        or guarantee completeness, accuracy, reliability, suitability, or availability at any given time.
+                    </p>
+                </section>
+
+                <section class="legal-card legal-section" id="services">
+                    <h2>3. Services Overview &amp; Disclaimer</h2>
+                    <p>Dynamic Bubble is a digital marketing agency offering services that may include digital strategy,
+                        social media management and analysis, brand communication, content development, paid media
+                        consultations, and related marketing support for founders, creators, startups, and growing
+                        brands.</p>
+                    <p>Service descriptions on this Website are general and may change without notice. Scope,
+                        deliverables, pricing, and timelines are indicative only and may vary based on individual client
+                        requirements.</p>
+                    <div class="legal-note">
+                        Viewing, reading, or submitting an enquiry through this Website does not create a client-agency
+                        relationship, contractual obligation, or retainer arrangement. No professional relationship is
+                        established unless a written Service Agreement is executed by both parties.
+                    </div>
+                    <p>Dynamic Bubble reserves the right to accept or decline any enquiry or project at its sole
+                        discretion.</p>
+                </section>
+
+                <section class="legal-card legal-section" id="enquiry">
+                    <h2>4. Enquiry &amp; Contact Form Submissions</h2>
+                    <p>This Website contains enquiry and contact forms through which visitors may submit details to
+                        express interest in our services or request a consultation.</p>
+                    <p>By submitting any form on this Website, you represent and warrant that:</p>
+                    <ul>
+                        <li>All information you provide is accurate, complete, and not misleading.</li>
+                        <li>You submit the form personally or with authority to represent the business or organisation
+                            on whose behalf you are enquiring.</li>
+                        <li>You are at least 18 years of age or have the legal capacity to enter into a business
+                            engagement.</li>
+                        <li>You are not submitting the form for any unlawful, fraudulent, or deceptive purpose.</li>
+                    </ul>
+                    <p>Submitting an enquiry form does not guarantee a response, meeting, proposal, or commencement of
+                        work. Dynamic Bubble will endeavour to respond within a reasonable timeframe but accepts no
+                        obligation to do so within any specific period.</p>
+                    <p>Submitting your contact details constitutes consent for Dynamic Bubble to contact you in
+                        connection with your enquiry, subject to our <a href="privacy-policy.html">Privacy Policy</a>.
+                    </p>
+                </section>
+
+                <section class="legal-card legal-section" id="results">
+                    <h2>5. No Guarantee of Business Results</h2>
+                    <p>Dynamic Bubble does not guarantee, represent, or warrant any specific business outcomes,
+                        marketing results, campaign performance, lead generation volumes, revenue growth, search
+                        rankings, social media reach, follower acquisition, or return on investment.</p>
+                    <div class="legal-note">
+                        Marketing outcomes are inherently variable. Results can be affected by platform algorithm
+                        changes, audience behaviour, competitive dynamics, advertising budgets, creative quality,
+                        approval cycles, platform policies, market conditions, and the nature of your product, service,
+                        or industry.
+                    </div>
+                    <p>Any performance targets or projections discussed before engagement are indicative only and are
+                        not contractual commitments unless explicitly stated in a signed Service Agreement.</p>
+                </section>
+
+                <section class="legal-card legal-section" id="proposals">
+                    <h2>6. Proposals, Quotations &amp; Service Agreements</h2>
+                    <p>Any proposal, quotation, deck, or scope document shared by Dynamic Bubble, whether by email,
+                        presentation, PDF, or another format, is exploratory and non-binding unless explicitly stated
+                        otherwise in writing.</p>
+                    <p>No paid work, deliverables, or services will commence until a formal written Service Agreement or
+                        Statement of Work has been reviewed and signed by both parties, the agreed scope and commercial
+                        terms have been documented, and applicable commencement conditions have been fulfilled.</p>
+                    <p>Until a Service Agreement is executed, Dynamic Bubble retains the right to withdraw, modify, or
+                        decline any proposal or quotation without liability.</p>
+                </section>
+
+                <section class="legal-card legal-section" id="ip">
+                    <h2>7. Intellectual Property</h2>
+                    <p>All content on this Website, including the Dynamic Bubble name, logo, wordmarks, taglines,
+                        graphics, illustrations, icons, photographs, copywriting, case study materials, articles, page
+                        layouts, design elements, and other visual or textual materials, is the intellectual property of
+                        Dynamic Bubble or its licensors and is protected under applicable Indian intellectual property
+                        laws.</p>
+                    <p>You are granted a limited, non-exclusive, non-transferable, revocable licence to access and view
+                        Website content solely for personal, non-commercial informational purposes related to evaluating
+                        Dynamic Bubble's services.</p>
+                    <p>You must not, without prior written permission from Dynamic Bubble:</p>
+                    <ul>
+                        <li>Copy, reproduce, republish, upload, post, transmit, or distribute Website content.</li>
+                        <li>Modify, adapt, translate, create derivative works from, or reverse-engineer Website content.
+                        </li>
+                        <li>Use Dynamic Bubble branding for commercial purposes or in a manner that implies endorsement
+                            or affiliation.</li>
+                        <li>Scrape, harvest, or systematically extract data from this Website using automated tools.</li>
+                    </ul>
+                </section>
+
+                <section class="legal-card legal-section" id="use">
+                    <h2>8. Permitted &amp; Prohibited Use</h2>
+                    <p>You may use this Website for lawful purposes only. You must not use it in a manner that violates
+                        applicable law, submit unsolicited commercial communications or spam, attempt unauthorised access
+                        to systems or databases, introduce malicious material, conduct denial-of-service attacks,
+                        impersonate another person or entity, harvest personally identifiable information, or frame or
+                        mirror the Website without written consent.</p>
+                    <p>We may take appropriate technical, legal, or operational action in response to suspected misuse
+                        of the Website.</p>
+                </section>
+
+                <section class="legal-card legal-section" id="third-party">
+                    <h2>9. Third-Party Links, Platforms &amp; Tools</h2>
+                    <p>This Website may contain links to external websites, platforms, tools, or resources operated by
+                        third parties, including social media platforms, scheduling tools, payment portals, or analytics
+                        dashboards. These links are provided for convenience only.</p>
+                    <p>Dynamic Bubble has no control over third-party content, availability, privacy practices, or terms
+                        and disclaims responsibility and liability for them. Your use of any third-party platform, tool,
+                        or service is governed solely by that third party's own terms and privacy policy.</p>
+                    <p>Platform policy changes made by third parties that affect delivery or performance of marketing
+                        services are outside Dynamic Bubble's control.</p>
+                </section>
+
+                <section class="legal-card legal-section" id="liability">
+                    <h2>10. Limitation of Liability</h2>
+                    <p>To the fullest extent permitted by applicable law, Dynamic Bubble, its directors, employees,
+                        contractors, agents, and affiliates shall not be liable for loss or damage arising out of or in
+                        connection with your access to or use of the Website, reliance on Website content, errors or
+                        omissions, interruptions, unauthorised access to data, viruses or harmful components, or
+                        third-party links and services.</p>
+                    <p>To the fullest extent permitted by law, Dynamic Bubble's total aggregate liability to you arising
+                        from or related to your use of this Website shall not exceed INR 5,000, regardless of cause of
+                        action or basis of liability. This limitation does not apply where liability cannot be excluded
+                        by law.</p>
+                </section>
+
+                <section class="legal-card legal-section" id="indemnity">
+                    <h2>11. Indemnity</h2>
+                    <p>You agree to indemnify, defend, and hold harmless Dynamic Bubble, its directors, employees,
+                        agents, contractors, licensors, and affiliates from claims, demands, losses, liabilities,
+                        damages, costs, and expenses arising out of or related to:</p>
+                    <ul>
+                        <li>Your use of or access to this Website.</li>
+                        <li>Your violation of these Terms.</li>
+                        <li>Your violation of applicable law, regulation, or third-party rights.</li>
+                        <li>Any content or information you submit through this Website that is false, inaccurate, or
+                            misleading.</li>
+                    </ul>
+                    <p>Dynamic Bubble may assume exclusive defence and control of any matter subject to indemnification,
+                        in which case you agree to cooperate with Dynamic Bubble's defence of such claim.</p>
+                </section>
+
+                <section class="legal-card legal-section" id="privacy">
+                    <h2>12. Privacy &amp; Data</h2>
+                    <p>Dynamic Bubble is committed to protecting the privacy of individuals who interact with this
+                        Website. Personal data collected through this Website, including data submitted through contact
+                        or enquiry forms, is handled in accordance with our <a href="privacy-policy.html">Privacy
+                            Policy</a>, which forms part of these Terms by reference.</p>
+                    <p>By using this Website or submitting your information through any form, you consent to the
+                        collection, use, storage, and processing of your personal data as described in our Privacy
+                        Policy.</p>
+                </section>
+
+                <section class="legal-card legal-section" id="termination">
+                    <h2>13. Termination &amp; Restriction of Access</h2>
+                    <p>Dynamic Bubble may, at its sole discretion and without prior notice, suspend, restrict, or
+                        terminate access to this Website or any part of it, remove or disable content submitted by you,
+                        or take any other action it deems appropriate in response to suspected breach of these Terms or
+                        applicable law.</p>
+                    <p>Upon termination or suspension of access, all licences and rights granted under these Terms
+                        immediately cease. Clauses that by their nature should survive termination, including
+                        intellectual property, limitation of liability, indemnity, and governing law, shall continue to
+                        apply.</p>
+                </section>
+
+                <section class="legal-card legal-section" id="law">
+                    <h2>14. Governing Law &amp; Jurisdiction</h2>
+                    <p>These Terms and any dispute or claim arising out of or in connection with them or their subject
+                        matter shall be governed by and construed in accordance with the laws of the Republic of India.
+                    </p>
+                    <p>Any disputes arising out of or relating to these Terms, the Website, or your use of it shall be
+                        subject to the exclusive jurisdiction of the courts located at Mumbai, Maharashtra, India. You
+                        submit to the personal jurisdiction of such courts for resolving any such dispute.</p>
+                    <p>Dynamic Bubble encourages parties to first attempt resolution through good-faith communication
+                        before initiating formal legal proceedings.</p>
+                </section>
+
+                <section class="legal-card legal-section" id="contact">
+                    <h2>15. Contact Us</h2>
+                    <p>For any questions, concerns, or clarifications regarding these Terms and Conditions, or for any
+                        formal notices to be served on Dynamic Bubble, please contact us using the details below.</p>
+                    <div class="legal-contact-grid">
+                        <div class="legal-contact-item">
+                            <strong>Legal Entity</strong>
+                            <span>Dynamic Bubble</span>
+                        </div>
+                        <div class="legal-contact-item">
+                            <strong>Location</strong>
+                            <span>Mumbai, Maharashtra, India</span>
+                        </div>
+                        <div class="legal-contact-item">
+                            <strong>Email Address</strong>
+                            <a href="mailto:dynamicbubbleinfo@gmail.com">dynamicbubbleinfo@gmail.com</a>
+                        </div>
+                        <div class="legal-contact-item">
+                            <strong>Website</strong>
+                            <a href="https://dynamicbubble.agency" target="_blank"
+                                rel="noopener noreferrer">dynamicbubble.agency</a>
+                        </div>
+                        <div class="legal-contact-item">
+                            <strong>Effective Date</strong>
+                            <span>April 1st 2026</span>
+                        </div>
+                        <div class="legal-contact-item">
+                            <strong>Related Page</strong>
+                            <a href="privacy-policy.html">Privacy Policy</a>
+                        </div>
+                    </div>
+                </section>
+            </article>
+        </div>
+    </main>
+
+    <footer class="footer" id="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Dynamic Bubble</h4>
+                    <p>Transforming startups into market leaders through exceptional design, development, and marketing.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html#web-development">Web Development</a></li>
+                        <li><a href="services.html#social-media">Social Media Management</a></li>
+                        <li><a href="services.html#digital-marketing">Digital Marketing</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-and-conditions.html">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Get In Touch</h4>
+                    <ul class="footer-links">
+                        <li class="footer-map">
+                            <a class="footer-map-link"
+                                href="https://www.google.com/maps/place/Malad,+Mumbai,+Maharashtra,+India"
+                                target="_blank" rel="noopener noreferrer"
+                                aria-label="Open Malad, Mumbai in Google Maps">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"
+                                    aria-hidden="true" focusable="false">
+                                    <path
+                                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5 14.5 7.62 14.5 9 13.38 11.5 12 11.5z" />
+                                </svg>
+                                <span class="footer-location">Malad, Mumbai</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="footer-social">
+                        <a href="https://www.linkedin.com/company/dynamic-bubble/" class="social-link"
+                            aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/dynamic_bubble" class="social-link"
+                            aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.960-.479-1.379-.899-.421-.419-.690-.824-.900-1.380-.165-.420-.359-1.065-.420-2.235-.045-1.260-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.170.255-1.814.420-2.234.210-.570.479-.960.900-1.381.419-.419.810-.689 1.379-.898.420-.166 1.051-.361 2.221-.421 1.275-.045 1.650-.060 4.859-.060l.045.030zm0 3.678c-3.405 0-6.162 2.760-6.162 6.162 0 3.405 2.760 6.162 6.162 6.162 3.405 0 6.162-2.760 6.162-6.162 0-3.405-2.760-6.162-6.162-6.162zM12 16c-2.210 0-4-1.790-4-4s1.790-4 4-4 4 1.790 4 4-1.790 4-4 4zm7.846-10.405c0 .795-.646 1.440-1.440 1.440-.795 0-1.440-.646-1.440-1.440 0-.794.646-1.439 1.440-1.439.793-.001 1.440.645 1.440 1.439z" />
+                            </svg>
+                        </a>
+                        <a href="mailto:dynamicbubbleinfo@gmail.com" class="social-link" aria-label="Email">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.89 2 1.99 2H20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="copyright-year">2026</span> Dynamic Bubble. Developed with love.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/card-nav.js"></script>
+    <script src="../js/text-type.js"></script>
+</body>
+
+</html>
