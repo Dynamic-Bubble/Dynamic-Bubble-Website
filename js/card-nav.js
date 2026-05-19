@@ -1,16 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Ensure GSAP is loaded
-    if (typeof gsap === 'undefined') {
-        console.error('GSAP is not loaded. CardNav requires GSAP.');
-        return;
-    }
-
     const navContainer = document.querySelector('.card-nav');
     if (!navContainer) return;
 
     const hamburger = document.querySelector('.hamburger-menu');
     const content = document.querySelector('.card-nav-content');
     const cards = document.querySelectorAll('.nav-card');
+    const hasGsap = typeof gsap !== 'undefined';
     
     // Configuration
     const ease = 'power3.out';
@@ -38,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
              // void content.offsetHeight;
              
              const contentHeight = content.scrollHeight;
-             const topBarHeight = 60;
+             const topBarHeight = document.querySelector('.card-nav-top')?.offsetHeight || 60;
              const padding = 16;
              
              // Restore styles
@@ -54,6 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Create the GSAP animation timeline
     const createTimeline = () => {
+        if (!hasGsap) return null;
+
         // Initial setup
         if (!isExpanded) {
             gsap.set(navContainer, { height: 60 });
@@ -79,11 +76,60 @@ document.addEventListener('DOMContentLoaded', () => {
         return timeline;
     };
 
+    const setupFallbackState = () => {
+        navContainer.style.height = '60px';
+        navContainer.style.transition = 'height 0.35s ease';
+        cards.forEach((card) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        });
+    };
+
+    const setFallbackCardsVisible = (visible) => {
+        cards.forEach((card, index) => {
+            const delay = visible ? index * 60 : 0;
+            window.setTimeout(() => {
+                card.style.opacity = visible ? '1' : '0';
+                card.style.transform = visible ? 'translateY(0)' : 'translateY(50px)';
+            }, delay);
+        });
+    };
+
+    const toggleMenuFallback = () => {
+        if (!isExpanded) {
+            hamburger.classList.add('open');
+            navContainer.classList.add('open');
+            isExpanded = true;
+            navContainer.style.height = `${calculateHeight()}px`;
+            setFallbackCardsVisible(true);
+        } else {
+            hamburger.classList.remove('open');
+            setFallbackCardsVisible(false);
+            navContainer.style.height = '60px';
+            isExpanded = false;
+            window.setTimeout(() => {
+                if (!isExpanded) {
+                    navContainer.classList.remove('open');
+                }
+            }, 350);
+        }
+    };
+
     // Initialize animation timeline
-    tl = createTimeline();
+    if (hasGsap) {
+        tl = createTimeline();
+    } else {
+        setupFallbackState();
+    }
 
     // Toggle menu state
     const toggleMenu = () => {
+        if (!hasGsap) {
+            toggleMenuFallback();
+            return;
+        }
+
         if (!tl) return;
         
         if (!isExpanded) {
@@ -140,6 +186,13 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(() => {
+            if (!hasGsap) {
+                if (isExpanded) {
+                    navContainer.style.height = `${calculateHeight()}px`;
+                }
+                return;
+            }
+
             if(isExpanded) {
                 // If menu is open, refresh the timeline to adjust height
                 if(tl) tl.kill();
