@@ -960,16 +960,16 @@ a:hover {
 /* Footer location: compact, accessible layout (no iframe/embed) */
 .footer-map {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    align-items: flex-start;
     gap: var(--spacing-xs);
     margin-top: var(--spacing-sm);
 }
 .footer-map-link {
     display: inline-flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 0.25rem;
+    gap: 0.45rem;
     color: var(--color-white);
     text-decoration: none;
 }
@@ -983,21 +983,8 @@ a:hover {
     font-size: var(--font-size-sm);
     font-weight: 700;
     color: var(--color-white);
-    margin-top: 2px;
+    margin-top: 0;
     line-height: 1;
-}
-
-@media (min-width: 900px) {
-    /* keep things compact on larger screens */
-    .footer-map {
-        flex-direction: row;
-    }
-    .footer-map-link {
-        flex-direction: row;
-    }
-    .footer-location {
-        margin-top: 0;
-    }
 }
 
 /* Newsletter Section */
@@ -1182,6 +1169,39 @@ a:hover {
 /* ===================================
    Service Detail Sections
    =================================== */
+
+#services-overview .services-overview-grid {
+    align-items: stretch;
+}
+
+#services-overview .services-overview-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#services-overview .services-overview-card .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+#web-development {
+    padding-top: calc(var(--spacing-3xl) + var(--spacing-lg));
+}
+
+@media (max-width: 768px) {
+    #services-overview .services-overview-card .btn {
+        align-self: stretch;
+        justify-content: center;
+    }
+
+    #web-development {
+        padding-top: var(--spacing-2xl);
+    }
+}
 
 .service-detail {
     margin-bottom: var(--spacing-3xl);

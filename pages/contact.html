@@ -29,534 +29,44 @@
             scroll-behavior: smooth;
         }
 
-        .payment-header {
-            margin-bottom: 1.5rem;
-        }
-
-        .payment-progress {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .progress-step {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.65rem 1.1rem;
-            border-radius: 999px;
-            background: #f1f3f8;
-            color: #5a6473;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.2s ease;
-        }
-
-        .progress-step.active {
-            background: #ffffff;
-            color: var(--color-primary);
-            border: 1px solid rgba(15, 23, 42, 0.08);
-            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
-        }
-
-        .progress-step.completed {
-            background: #eaf7f0;
-            color: #1b7a4a;
-        }
-
-        .progress-line {
-            flex: 1;
-            height: 2px;
-            min-width: 60px;
-            background: linear-gradient(90deg, rgba(15, 23, 42, 0.15), rgba(15, 23, 42, 0.03));
-        }
-
-        .progress-step .progress-hint {
-            margin-left: 0.5rem;
-            font-size: 0.78rem;
-            color: rgba(90, 100, 115, 0.8);
-            font-weight: 600;
-            opacity: 0.95;
-        }
-
-        .payment-shell {
-            display: flex;
-            flex-direction: column;
-            gap: 2.5rem;
-        }
-
-        .payment-grid {
+        .contact-options-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: start;
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            margin-top: 2rem;
         }
 
-        .payment-card,
-        .payment-form-card {
+        .contact-option-card {
             background: #ffffff;
-            border-radius: 22px;
-            padding: 2rem;
-            border: 1px solid rgba(15, 23, 42, 0.06);
-            box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid rgba(124, 58, 237, 0.14);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 16px 40px rgba(31, 24, 64, 0.08);
         }
 
-        .payment-card:hover,
-        .payment-form-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 22px 60px rgba(15, 23, 42, 0.12);
-        }
-
-        .plan-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.4rem 0.85rem;
-            border-radius: 999px;
-            background: rgba(79, 70, 229, 0.1);
-            color: var(--color-primary);
-            font-weight: 600;
-            font-size: 0.85rem;
-        }
-
-        .plan-picker {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 1rem;
-            margin-bottom: 1.8rem;
-        }
-
-        .plan-card {
-            border: 1px solid rgba(15, 23, 42, 0.12);
-            border-radius: 18px;
-            padding: 1rem 1.1rem;
-            background: #f8fafc;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
-        }
-
-        .plan-card h4 {
-            margin-bottom: 0.35rem;
-            font-size: 1.05rem;
-        }
-
-        .plan-card p {
-            margin-bottom: 0;
-            font-size: 0.9rem;
-            color: var(--color-text-light);
-        }
-
-        .plan-card .plan-card-price {
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: var(--color-text-dark);
+        .contact-option-card h3 {
             margin-bottom: 0.45rem;
-        }
-
-        .plan-card.active {
-            background: #ffffff;
-            border-color: var(--color-primary);
-            box-shadow: 0 16px 35px rgba(15, 23, 42, 0.12);
-            transform: translateY(-2px);
-        }
-
-        .payment-summary {
-            margin-bottom: 1.5rem;
-        }
-
-        .price {
-            font-size: 2.6rem;
-            font-weight: 700;
-            color: var(--color-primary);
-            margin: 0.4rem 0 0.8rem;
-        }
-
-        .plan-note {
-            color: var(--color-text-light);
-            margin-bottom: 1.6rem;
-        }
-
-        .upi-block {
-            background: #f7f8fb;
-            border-radius: 16px;
-            padding: 1rem 1.2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .upi-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        #upi-id {
-            font-weight: 600;
             color: var(--color-text-dark);
         }
 
-        .btn-outline {
-            border: 1px solid rgba(15, 23, 42, 0.2);
-            background: transparent;
-            color: var(--color-text-dark);
-            padding: 0.55rem 1.1rem;
-            border-radius: 12px;
-            font-weight: 600;
-            transition: all 0.2s ease;
-        }
-
-        .btn-outline:hover {
-            border-color: var(--color-primary);
-            color: var(--color-primary);
-            transform: translateY(-1px);
-        }
-
-        .copy-status {
-            display: block;
-            font-size: 0.85rem;
-            color: #1b7a4a;
-            margin-top: 0.5rem;
-            min-height: 1.1rem;
-        }
-
-        .qr-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border: 1px dashed rgba(15, 23, 42, 0.2);
-            border-radius: 18px;
-            padding: 1.2rem;
-            margin-bottom: 1.5rem;
-            background: #ffffff;
-        }
-
-        .qr-caption {
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-        }
-
-        .qr-code {
-            width: 180px;
-            height: 180px;
-        }
-
-        .trust-text {
-            margin-top: 1rem;
+        .contact-option-card p {
             color: var(--color-text-light);
-            font-size: 0.95rem;
-        }
-
-        .payment-form-card h3 {
-            margin-bottom: 0.6rem;
-        }
-
-        .form-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .form-tag {
-            background: rgba(79, 70, 229, 0.12);
-            color: #4c1d95;
-            padding: 0.35rem 0.75rem;
-            border-radius: 999px;
-            font-weight: 600;
-            font-size: 0.85rem;
-        }
-
-        .form-header h3 {
-            margin: 0;
-        }
-
-        .form-subtitle {
-            color: var(--color-text-light);
-            margin-bottom: 1.5rem;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 1rem;
-        }
-
-        .field {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .payment-input,
-        .payment-select,
-        .payment-file {
-            border: 1px solid rgba(15, 23, 42, 0.2);
-            border-radius: 14px;
-            padding: 0.85rem 1rem;
-            font-size: 1rem;
-            color: var(--color-text-dark);
-            background: #ffffff;
-            transition: border 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .payment-input:focus,
-        .payment-select:focus,
-        .payment-file:focus {
-            outline: none;
-            border-color: var(--color-primary);
-            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
-        }
-
-        .payment-input[readonly] {
-            background: #f7f8fb;
-            color: var(--color-text-light);
-        }
-
-        .field-error {
-            display: none;
-            color: #d14343;
-            font-size: 0.85rem;
-        }
-
-        .field.is-error .payment-input,
-        .field.is-error .payment-select {
-            border-color: #d14343;
-        }
-
-        .field.is-error .field-error {
-            display: block;
-        }
-
-        .form-note {
-            margin-top: 1rem;
-            color: var(--color-text-light);
-            font-size: 0.9rem;
-            text-align: center;
-        }
-
-        .payment-success {
-            text-align: center;
-            padding: 2rem 1.5rem;
-            border-radius: 18px;
-            border: 1px dashed rgba(15, 23, 42, 0.2);
-            background: #f8fafc;
-        }
-
-        .payment-aside {
-            padding: 2rem;
-            border-radius: 22px;
-            background: linear-gradient(140deg, #111827 0%, #312e81 100%);
-            color: #f8fafc;
-            box-shadow: 0 20px 45px rgba(15, 23, 42, 0.25);
-        }
-
-        /* Make CTAs readable on the dark aside */
-        .payment-aside .btn,
-        .payment-aside .btn span {
-            color: #ffffff !important;
-        }
-
-        .payment-aside .btn {
-            border-color: rgba(255, 255, 255, 0.14) !important;
-            background: transparent !important;
-            box-shadow: none !important;
-            padding: 0.6rem 0.9rem !important;
-            font-weight: 700;
-            border-radius: 12px;
-        }
-
-        .payment-aside .btn.btn-outline {
-            background: rgba(255, 255, 255, 0.04) !important;
-            border-color: rgba(255, 255, 255, 0.18) !important;
-            color: #ffffff !important;
-        }
-
-        .payment-aside .btn.btn-secondary {
-            background: linear-gradient(135deg, #9B7EDE 0%, #7C3AED 100%) !important;
-            color: #ffffff !important;
-            border-color: transparent !important;
-        }
-
-        .payment-aside .aside-text {
-            color: rgba(248, 250, 252, 0.95);
-        }
-
-        /* Disabled button state */
-        .btn[disabled],
-        .btn.btn-disabled {
-            opacity: 0.6 !important;
-            cursor: not-allowed !important;
-            pointer-events: none !important;
-            transform: none !important;
-        }
-
-        /* Fullscreen step layout for step-1 & step-2 */
-        .payment-shell.fullscreen {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding-top: 2rem;
-            padding-bottom: 2rem;
-        }
-
-        .payment-shell.fullscreen .payment-grid {
-            grid-template-columns: 1fr;
-            gap: 0;
-        }
-
-        .payment-shell.fullscreen .payment-card {
-            width: min(980px, 96%);
-            margin: 0 auto;
-            min-height: calc(100vh - 140px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 2.25rem;
-            box-shadow: 0 28px 70px rgba(15, 23, 42, 0.12);
-            border-radius: 18px;
-        }
-
-        /* keep the form hidden by default in fullscreen mode; reveal only when show-step-2 is active */
-        .payment-shell.fullscreen .payment-form-card {
-            width: min(980px, 96%);
-            margin: 0 auto;
-            min-height: calc(100vh - 140px);
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            padding: 2.25rem;
-            box-shadow: 0 28px 70px rgba(15, 23, 42, 0.12);
-            border-radius: 18px;
-        }
-
-        /* When user moves to step 2, hide the step-1 card and center the form */
-        .payment-shell.show-step-2 .payment-card {
-            display: none;
-        }
-
-        .payment-shell.show-step-2 .payment-form-card {
-            display: flex;
-        }
-
-        /* hide redundant small 'Step 2' tag in the form when focus is on step-2 */
-        .payment-shell.show-step-2 .form-tag {
-            display: none !important;
-        }
-
-        @media (max-width: 900px) {
-
-            .payment-shell.fullscreen .payment-card,
-            .payment-shell.fullscreen .payment-form-card {
-                min-height: auto;
-                padding: 1.25rem;
-            }
-
-            .payment-shell.fullscreen {
-                padding-top: 1rem;
-                padding-bottom: 1rem;
-            }
-        }
-
-        /* When stacked (fullscreen) make the aside match the main card width */
-        .payment-shell.fullscreen .payment-aside,
-        .payment-shell.fullscreen #after-pay-aside {
-            width: min(980px, 96%);
-            margin: 1.25rem auto 0 auto;
-        }
-
-        .payment-aside h3 {
-            color: #ffffff;
             margin-bottom: 1rem;
         }
 
-        .aside-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.3rem 0.75rem;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.12);
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .aside-list {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: grid;
-            gap: 0.75rem;
-        }
-
-        .aside-item {
-            display: flex;
-            gap: 0.75rem;
-            align-items: flex-start;
-        }
-
-        .aside-step {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.18);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .contact-option-card a,
+        .contact-option-card span {
+            color: var(--color-primary);
             font-weight: 700;
-            font-size: 0.85rem;
+            overflow-wrap: anywhere;
         }
 
-        .aside-text {
-            color: rgba(248, 250, 252, 0.85);
-            font-size: 0.95rem;
-        }
-
-        /* Ensure plan-note and trust-text are readable on the dark aside */
-        .payment-aside .plan-note,
-        .payment-aside .trust-text,
-        #after-pay-aside .plan-note,
-        #after-pay-aside .trust-text {
-            color: rgba(248, 250, 252, 0.95) !important;
-            font-weight: 600;
-        }
-
-        .success-icon {
-            font-size: 1.8rem;
-            margin-bottom: 0.6rem;
-        }
-
-        @media (max-width: 900px) {
-            .payment-progress {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .progress-line {
-                width: 100%;
-            }
-
-            .payment-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .plan-picker {
-                grid-template-columns: 1fr;
-            }
-
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
+        .contact-note {
+            margin-top: 1.5rem;
+            color: var(--color-text-light);
+            text-align: center;
         }
     </style>
-
 
 </head>
 
@@ -652,172 +162,48 @@
     <!-- Contact Section -->
     <section class="section section-alt">
         <div class="container">
-            <div class="section-header scroll-reveal payment-header">
-                <!-- <h2 id="payment-title">Complete Your Payment</h2> -->
-                <p id="payment-description">
-                    Review your selected plan, complete the payment, and share your transaction details for quick
-                    verification.
-                </p>
+            <div class="section-header scroll-reveal">
+                <h1>Contact Dynamic Bubble</h1>
+                <p>Tell us what you are building, where you want to grow, and how we can help.</p>
             </div>
 
-            <!-- <div class="payment-progress scroll-reveal" aria-label="Payment steps">
-                <div class="progress-step active" data-step="pay" role="button" tabindex="0"
-                    aria-label="Return to Step 1 — Pay">
-                    <span>Step 1</span>
-                    <span>Pay</span>
-                    <span class="progress-hint" aria-hidden="true">Click to return</span>
+            <div class="contact-options-grid">
+                <div class="contact-option-card scroll-reveal">
+                    <h3>Email</h3>
+                    <p>For enquiries, collaborations, and project discussions.</p>
+                    <a href="mailto:dynamicbubbleinfo@gmail.com">dynamicbubbleinfo@gmail.com</a>
                 </div>
-                <div class="progress-line" aria-hidden="true"></div>
-                <div class="progress-step" data-step="submit" hidden aria-hidden="true">
-                    <span>Step 2</span>
-                    <span>Submit Details</span>
+
+                <div class="contact-option-card scroll-reveal">
+                    <h3>LinkedIn</h3>
+                    <p>Connect with Dynamic Bubble for business updates.</p>
+                    <a href="https://www.linkedin.com/company/dynamic-bubble/" target="_blank" rel="noopener noreferrer">Dynamic Bubble on LinkedIn</a>
                 </div>
-            </div> -->
 
-            <div class="payment-shell">
-                <div class="payment-grid">
-                    <div class="payment-card scroll-reveal">
-                        <div class="plan-picker" aria-label="Choose a plan" id="plan-picker"></div>
+                <div class="contact-option-card scroll-reveal">
+                    <h3>Instagram</h3>
+                    <p>Follow our work and updates on Instagram.</p>
+                    <a href="https://www.instagram.com/dynamic_bubble" target="_blank" rel="noopener noreferrer">@dynamic_bubble</a>
+                </div>
 
-                        <div class="payment-summary">
-                            <div class="plan-pill">Selected Plan</div>
-                            <h3 id="service-name">Social Media Analysis</h3>
-                            <div class="price" id="plan-price">Free — One Time</div>
-                            <p class="plan-note" id="plan-note">Free one-time social media audit and recommendations.
-                            </p>
-                        </div>
-
-                        <!-- <div class="upi-block">
-                        <div class="upi-label">UPI ID</div>
-                        <div class="upi-row">
-                            <span id="upi-id">9899812449@jupiteraxis</span>
-                            <button class="btn-outline" type="button" id="copy-upi">Copy</button>
-                        </div>
-                        <span class="copy-status" id="copy-status" role="status" aria-live="polite"></span>
-                    </div> -->
-
-                        <button class="btn btn-primary btn-lg" type="button" id="paid-btn" style="width: 100%;">
-                            Contact Us
-                        </button>
-                        <!-- <p class="trust-text">Secure manual verification. Our team will confirm within 1-2 hours.</p> -->
-                    </div>
-
-                    <div class="payment-form-card scroll-reveal" id="payment-form" hidden aria-hidden="true">
-                        <div class="form-header">
-                            <span class="form-tag">Step 2</span>
-                            <div>
-                                <h3>Submit Payment Confirmation</h3>
-                                <p class="form-subtitle">Use the email address you want us to contact.</p>
-                            </div>
-                        </div>
-
-                        <form id="payment-confirmation-form" action="https://api.web3forms.com/submit" method="POST"
-                            enctype="multipart/form-data" novalidate>
-                            <input type="hidden" name="access_key" value="ed11d871-5940-4029-8ede-23f9cac8bcea">
-                            <div class="form-grid">
-                                <div class="field">
-                                    <label for="full-name">Full Name *</label>
-                                    <input type="text" id="full-name" name="fullName" class="payment-input" required
-                                        autocomplete="name">
-                                    <span class="field-error">Please enter your full name.</span>
-                                </div>
-
-                                <div class="field">
-                                    <label for="email-address">Email *</label>
-                                    <input type="email" id="email-address" name="email" class="payment-input" required
-                                        autocomplete="email">
-                                    <span class="field-error">Please enter a valid email address.</span>
-                                </div>
-                            </div>
-
-                            <div class="field">
-                                <label for="service-selected">Service Selected</label>
-                                <input type="text" id="service-selected" name="serviceSelected" class="payment-input"
-                                    readonly>
-                            </div>
-
-                            <div class="form-grid">
-                                <div class="field">
-                                    <label for="payment-method">Payment Method *</label>
-                                    <select id="payment-method" name="paymentMethod" class="payment-select" required>
-                                        <option value="">Select a method</option>
-                                        <option value="upi">UPI</option>
-                                        <option value="bank-transfer">Bank Transfer</option>
-                                    </select>
-                                    <span class="field-error">Please select a payment method.</span>
-                                </div>
-
-                                <div class="field">
-                                    <label for="transaction-id">Transaction ID *</label>
-                                    <input type="text" id="transaction-id" name="transactionId" class="payment-input"
-                                        required placeholder="e.g., TXN12345678" autocomplete="off"
-                                        aria-describedby="txn-help">
-                                    <span class="field-error">Please enter the transaction ID.</span>
-                                    <p id="txn-help" class="form-note" style="margin-top:0.4rem; font-size:0.92rem;">
-                                        Paste the UPI reference or bank transfer ID you received after payment.</p>
-                                </div>
-                            </div>
-
-                            <div class="field">
-                                <label for="payment-proof">Screenshot (optional)</label>
-                                <input type="file" id="payment-proof" name="paymentProof" class="payment-file"
-                                    accept="image/*">
-                                <p class="form-note" style="margin-top:0.4rem; font-size:0.9rem;">If you add a
-                                    screenshot, we will upload it to ImageKit and include the link in your submission.
-                                </p>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
-                                Submit Details
-                            </button>
-
-                            <p class="form-note">We only use these details to confirm your payment.</p>
-                        </form>
-
-                        <div class="payment-success" id="payment-success" hidden>
-                            <div class="success-icon">✅</div>
-                            <h4>Payment submitted successfully</h4>
-                            <p>Our team will verify and contact you shortly.</p>
-
-                        </div>
-                    </div>
-
-                    <aside class="payment-aside scroll-reveal" id="after-pay-aside"
-                        aria-label="After payment: next steps">
-                        <div class="aside-tag">After You Pay</div>
-                        <h3>What to expect next</h3>
-                        <ul class="aside-list" style="margin-top:0.8rem;">
-                            <li class="aside-item">
-                                <span class="aside-step">1</span>
-                                <span class="aside-text">Verification in <strong>1–2 hours</strong> during business
-                                    hours.</span>
-                            </li>
-                            <li class="aside-item">
-                                <span class="aside-step">2</span>
-                                <span class="aside-text">You'll receive a confirmation email with onboarding
-                                    details.</span>
-                            </li>
-                            <li class="aside-item">
-                                <span class="aside-step">3</span>
-                                <span class="aside-text">We schedule your kickoff call or share next actions.</span>
-                            </li>
-                        </ul>
-
-                        <div style="margin-top:1rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
-                            <a class="btn btn-outline" href="mailto:dynamicbubbleinfo@gmail.com">Email support</a>
-                        </div>
-                    </aside>
+                <div class="contact-option-card scroll-reveal">
+                    <h3>Location</h3>
+                    <p>Based in Mumbai and working with clients remotely.</p>
+                    <span>Malad, Mumbai</span>
                 </div>
             </div>
+
+            <p class="contact-note">For service requests, include your website or social profile link so we can review the context before replying.</p>
+        </div>
     </section>
 
     <!-- Moved Hero Section -->
     <section class="hero" style="padding: 4rem 0;">
         <div class="container">
             <div class="hero-content fade-in-up">
-                <h1>Let's Build Something Great Together</h1>
+                <h2>Let's Build Something Great Together</h2>
                 <p class="hero-subtitle">
-                    Schedule your free consultation and discover how we can help accelerate your business growth
+                    Email us with your goals and we will suggest the next useful step.
                 </p>
             </div>
         </div>
@@ -899,9 +285,9 @@
                         </button>
                         <div class="faq-answer">
                             <div class="faq-answer-content">
-                                <p>Yes! During your free consultation, we'll share relevant case studies and portfolio
-                                    pieces that match your industry and goals. We're proud of our work and love showing
-                                    how we've helped businesses like yours achieve measurable growth.</p>
+                                <p>Yes. When relevant, we'll share examples, references, or project approaches that
+                                    match your industry and goals so you can understand how we think before moving
+                                    forward.</p>
                             </div>
                         </div>
                     </div>
@@ -934,9 +320,9 @@
             <div class="scroll-reveal">
                 <h2>Still Have Questions?</h2>
                 <p>We're here to help! Reach out and let's have a conversation about your goals.</p>
-                <a href="#payment-form" class="btn btn-lg"
+                <a href="mailto:dynamicbubbleinfo@gmail.com" class="btn btn-lg"
                     style="background-color: white; color: var(--color-primary);">
-                    Get Started Now
+                    Email Us
                 </a>
             </div>
         </div>
@@ -947,9 +333,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>⚡ Digital Services</h4>
-                    <p>Transforming startups into market leaders through exceptional design, development, and marketing.
-                    </p>
+                    <h4>⚡ Dynamic Bubble</h4>
+                    <p>Helping startups, creators, businesses, and individuals grow through marketing, social media, and digital solutions.</p>
                 </div>
 
                 <div class="footer-section">
@@ -1032,498 +417,6 @@
     <script src="../js/script.js"></script>
     <script src="../js/card-nav.js"></script>
     <script src="../js/text-type.js"></script>
-
-
-    <!-- Payment Page Script -->
-    <script>
-        const PLAN_MAP = {
-            "499": {
-                name: "Social Media Analysis",
-                description: "Free one-time social media audit and recommendations.",
-                serviceLabel: "Social Media Analysis (One-time)"
-            },
-            "799": {
-                name: "Premium Social Media Analysis",
-                description: "Premium in-depth social media audit with prioritized recommendations.",
-                serviceLabel: "Premium Social Media Analysis"
-            },
-            "999": {
-                name: "Marketing Strategy",
-                description: "Startup-focused marketing strategy and roadmap.",
-                serviceLabel: "Marketing Strategy - Startup"
-            }
-        };
-
-        const IMAGEKIT_CONFIG = {
-            publicKey: "public_bawcFuqY3HLre7P4fMaC41yXkNY=",
-            urlEndpoint: "https://ik.imagekit.io/h2ve38sl6",
-            authEndpoint: "/api/imagekit-auth",
-            folder: "/payment-proofs"
-        };
-
-        let activePlanKey = "499";
-
-        function getQueryParams() {
-            const params = new URLSearchParams(window.location.search);
-            return {
-                plan: params.get("plan")
-            };
-        }
-
-        function setActivePlan(planKey) {
-            const planCards = document.querySelectorAll(".plan-card");
-            planCards.forEach((card) => {
-                card.classList.toggle("active", card.dataset.plan === planKey);
-            });
-        }
-
-        function setPlanParam(planKey) {
-            const url = new URL(window.location.href);
-            url.searchParams.set("plan", planKey);
-            window.history.replaceState({}, "", url.toString());
-        }
-
-        function updateUI(planOverride) {
-            const { plan } = getQueryParams();
-            const planKey = planOverride || plan || "499";
-            const selectedPlan = PLAN_MAP[planKey] || PLAN_MAP["499"];
-            activePlanKey = planKey;
-
-            const paymentDescription = document.getElementById("payment-description");
-            const serviceName = document.getElementById("service-name");
-            const planPrice = document.getElementById("plan-price");
-            const planNote = document.getElementById("plan-note");
-            const serviceSelected = document.getElementById("service-selected");
-
-            // paymentTitle.textContent = `Complete process for ${selectedPlan.name}`;
-            paymentDescription.textContent = selectedPlan.description;
-            serviceName.textContent = selectedPlan.name;
-            planPrice.textContent = selectedPlan.price;
-            planNote.textContent = selectedPlan.description;
-            serviceSelected.value = `${selectedPlan.serviceLabel} (${selectedPlan.price})`;
-
-            setActivePlan(activePlanKey);
-
-            if (plan || planOverride) {
-                document.title = `Payment - ${selectedPlan.name} | Dynamic Bubble`;
-            } else {
-                document.title = `Contact | Dynamic Bubble`;
-            }
-        }
-
-        function renderPlanPicker() {
-            const picker = document.getElementById('plan-picker') || document.querySelector('.plan-picker');
-            if (!picker) return;
-            picker.innerHTML = '';
-
-            Object.keys(PLAN_MAP).forEach((planKey) => {
-                const plan = PLAN_MAP[planKey];
-                const card = document.createElement('div');
-                card.className = 'plan-card';
-                card.dataset.plan = planKey;
-                card.setAttribute('role', 'button');
-                card.tabIndex = 0;
-
-                const price = document.createElement('div');
-                price.className = 'plan-card-price';
-                price.textContent = plan.price;
-
-                const title = document.createElement('h4');
-                title.textContent = plan.name;
-
-                const desc = document.createElement('p');
-                desc.textContent = plan.description;
-
-                card.appendChild(price);
-                card.appendChild(title);
-                card.appendChild(desc);
-
-                picker.appendChild(card);
-            });
-        }
-
-        function copyToClipboard(text) {
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                return navigator.clipboard.writeText(text);
-            }
-
-            return new Promise((resolve, reject) => {
-                const textArea = document.createElement("textarea");
-                textArea.value = text;
-                textArea.style.position = "fixed";
-                textArea.style.left = "-9999px";
-                document.body.appendChild(textArea);
-                textArea.focus();
-                textArea.select();
-
-                try {
-                    const successful = document.execCommand("copy");
-                    document.body.removeChild(textArea);
-                    successful ? resolve() : reject(new Error("Copy failed"));
-                } catch (error) {
-                    document.body.removeChild(textArea);
-                    reject(error);
-                }
-            });
-        }
-
-        function sanitizeFileName(fileName) {
-            return fileName.replace(/[^a-zA-Z0-9._-]/g, "_");
-        }
-
-        async function uploadPaymentProof(file, transactionId) {
-            if (!file) return "";
-
-            if (IMAGEKIT_CONFIG.publicKey === "YOUR_IMAGEKIT_PUBLIC_KEY") {
-                console.warn("ImageKit public key not set. Skipping upload.");
-                return "";
-            }
-
-            const authResponse = await fetch(IMAGEKIT_CONFIG.authEndpoint, {
-                method: "GET"
-            });
-
-            if (!authResponse.ok) {
-                throw new Error("ImageKit auth failed");
-            }
-
-            const authData = await authResponse.json();
-            const safeName = sanitizeFileName(file.name || "proof.jpg");
-            const timeStamp = Date.now();
-            const fileName = transactionId
-                ? `${transactionId}_${safeName}`
-                : `payment_${timeStamp}_${safeName}`;
-
-            const uploadForm = new FormData();
-            uploadForm.append("file", file);
-            uploadForm.append("fileName", fileName);
-            uploadForm.append("publicKey", IMAGEKIT_CONFIG.publicKey);
-            uploadForm.append("signature", authData.signature);
-            uploadForm.append("expire", authData.expire);
-            uploadForm.append("token", authData.token);
-            uploadForm.append("folder", IMAGEKIT_CONFIG.folder);
-            uploadForm.append("useUniqueFileName", "true");
-
-            const uploadResponse = await fetch("https://upload.imagekit.io/api/v1/files/upload", {
-                method: "POST",
-                body: uploadForm
-            });
-
-            const uploadData = await uploadResponse.json().catch(() => ({}));
-            if (!uploadResponse.ok || !uploadData.url) {
-                throw new Error(uploadData.message || "Image upload failed");
-            }
-
-            return uploadData.url;
-        }
-
-        function clearFieldErrors(form) {
-            const fields = form.querySelectorAll(".field");
-            fields.forEach((field) => field.classList.remove("is-error"));
-        }
-
-        async function handleFormSubmit(event) {
-            event.preventDefault();
-
-            const form = event.currentTarget;
-            clearFieldErrors(form);
-
-            const fullName = document.getElementById("full-name");
-            const email = document.getElementById("email-address");
-            const paymentMethod = document.getElementById("payment-method");
-            const transactionId = document.getElementById("transaction-id");
-            const serviceSelected = document.getElementById("service-selected");
-            const paymentProof = document.getElementById("payment-proof");
-
-            let isValid = true;
-
-            if (!fullName.value.trim()) {
-                fullName.closest(".field").classList.add("is-error");
-                isValid = false;
-            }
-
-            const emailValue = email.value.trim();
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailValue || !emailRegex.test(emailValue)) {
-                email.closest(".field").classList.add("is-error");
-                isValid = false;
-            }
-
-            if (!paymentMethod.value) {
-                paymentMethod.closest(".field").classList.add("is-error");
-                isValid = false;
-            }
-
-            if (!transactionId.value.trim()) {
-                transactionId.closest(".field").classList.add("is-error");
-                isValid = false;
-            }
-
-            if (!isValid) {
-                return;
-            }
-
-            const payload = {
-                fullName: fullName.value.trim(),
-                email: emailValue,
-                serviceSelected: serviceSelected.value,
-                paymentMethod: paymentMethod.value,
-                transactionId: transactionId.value.trim(),
-                proofFileName: paymentProof.files[0] ? paymentProof.files[0].name : "",
-                submittedAt: new Date().toISOString(),
-                screenshotUrl: ""
-            };
-
-            const submitBtn = form.querySelector('button[type="submit"]');
-            if (submitBtn) {
-                submitBtn.disabled = true;
-                submitBtn.setAttribute('aria-disabled', 'true');
-            }
-
-            if (paymentProof.files[0]) {
-                try {
-                    payload.screenshotUrl = await uploadPaymentProof(paymentProof.files[0], payload.transactionId);
-                } catch (error) {
-                    console.error("ImageKit upload failed:", error);
-                    alert("Screenshot upload failed. We'll continue without it. You may be asked to email it later.");
-                }
-            }
-
-            const formData = new FormData(form);
-            formData.set("access_key", "ed11d871-5940-4029-8ede-23f9cac8bcea");
-            formData.set("proofFileName", payload.proofFileName || "");
-            formData.set("submittedAt", payload.submittedAt);
-            formData.set("screenshotUrl", payload.screenshotUrl || "");
-            // Web3Forms free plan does not allow file uploads; remove file field from payload
-            formData.delete("paymentProof");
-
-            try {
-                const response = await fetch("https://api.web3forms.com/submit", {
-                    method: "POST",
-                    body: formData
-                });
-                const data = await response.json().catch(() => ({}));
-
-                if (!response.ok || data.success === false) {
-                    throw new Error(data.message || "Submission failed");
-                }
-            } catch (error) {
-                console.error("Web3Forms submission failed:", error);
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.setAttribute('aria-disabled', 'false');
-                }
-                alert("We could not submit your details right now. Please try again.");
-                return;
-            }
-
-            const existing = JSON.parse(localStorage.getItem("paymentConfirmations") || "[]");
-            existing.push(payload);
-            localStorage.setItem("paymentConfirmations", JSON.stringify(existing));
-
-            form.reset();
-            serviceSelected.value = payload.serviceSelected;
-
-            const successCard = document.getElementById("payment-success");
-            const progressPay = document.querySelector('[data-step="pay"]');
-            const progressSubmit = document.querySelector('[data-step="submit"]');
-
-            progressPay.classList.add("completed");
-            progressSubmit.classList.add("completed");
-
-            form.hidden = true;
-            successCard.hidden = false;
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            // Render plan cards from PLAN_MAP first, then update UI
-            renderPlanPicker();
-            updateUI();
-
-            // Make the payment area fullscreen for step-focused UX
-            const paymentShell = document.querySelector('.payment-shell');
-            if (paymentShell) {
-                paymentShell.classList.add('fullscreen');
-            }
-
-            const paidButton = document.getElementById("paid-btn");
-            const copyButton = document.getElementById("copy-upi");
-            const copyStatus = document.getElementById("copy-status");
-            const upiEl = document.getElementById("upi-id");
-            const upiId = upiEl ? upiEl.textContent.trim() : "";
-            const form = document.getElementById("payment-confirmation-form");
-            const progressPay = document.querySelector('[data-step="pay"]');
-            const progressSubmit = document.querySelector('[data-step="submit"]');
-            const planCards = document.querySelectorAll(".plan-card");
-
-            planCards.forEach((card) => {
-                const selectPlan = () => {
-                    const planKey = card.dataset.plan;
-                    setPlanParam(planKey);
-                    updateUI(planKey);
-                };
-
-                card.addEventListener("click", selectPlan);
-                card.addEventListener("keydown", (event) => {
-                    if (event.key === "Enter" || event.key === " ") {
-                        event.preventDefault();
-                        selectPlan();
-                    }
-                });
-            });
-
-            // Reveal step-2 only after user indicates they've paid
-            const paymentFormCard = document.getElementById("payment-form");
-
-            // Ensure step-2 & form are hidden on initial load (defensive)
-            if (progressSubmit) {
-                progressSubmit.hidden = true;
-                progressSubmit.setAttribute('aria-hidden', 'true');
-            }
-
-            if (paymentFormCard) {
-                paymentFormCard.hidden = true;
-                paymentFormCard.setAttribute('aria-hidden', 'true');
-            }
-
-            paidButton.addEventListener("click", () => {
-                progressPay.classList.add("completed");
-
-                // reveal progress step and form
-                if (progressSubmit && progressSubmit.hidden) {
-                    progressSubmit.hidden = false;
-                    progressSubmit.setAttribute('aria-hidden', 'false');
-                }
-                if (progressSubmit) progressSubmit.classList.add("active");
-
-                if (paymentFormCard && paymentFormCard.hidden) {
-                    paymentFormCard.hidden = false;
-                    paymentFormCard.setAttribute('aria-hidden', 'false');
-                }
-
-                // switch layout to focus step-2 (hide step-1 card in fullscreen)
-                if (paymentShell) paymentShell.classList.add('show-step-2');
-
-                // hide the small form tag 'Step 2' to avoid duplicate labels
-                const formTag = paymentFormCard.querySelector('.form-tag');
-                if (formTag) {
-                    formTag.hidden = true;
-                    formTag.setAttribute('aria-hidden', 'true');
-                }
-
-                // smooth scroll to the now-visible form and focus first field
-                paymentFormCard.scrollIntoView({ behavior: "smooth", block: 'start' });
-                const firstField = paymentFormCard.querySelector('input, select, textarea, button');
-                if (firstField) firstField.focus();
-            });
-            // Make the 'Step 1' progress step clickable to return from Step 2
-            if (progressPay) {
-                progressPay.style.cursor = 'pointer';
-                const goToStep1 = () => {
-                    if (paymentShell && paymentShell.classList.contains('show-step-2')) {
-                        // remove step-2 focused layout
-                        paymentShell.classList.remove('show-step-2');
-
-                        // hide the payment form and update aria
-                        if (paymentFormCard) {
-                            paymentFormCard.hidden = true;
-                            paymentFormCard.setAttribute('aria-hidden', 'true');
-                            const formTagRestore = paymentFormCard.querySelector('.form-tag');
-                            if (formTagRestore) {
-                                formTagRestore.hidden = false;
-                                formTagRestore.setAttribute('aria-hidden', 'false');
-                            }
-                        }
-
-                        // hide the progress submit step again
-                        if (progressSubmit) {
-                            progressSubmit.classList.remove('active');
-                            progressSubmit.hidden = true;
-                            progressSubmit.setAttribute('aria-hidden', 'true');
-                            progressSubmit.classList.remove('completed');
-                        }
-
-                        // restore pay progress state and scroll back to the pay card
-                        if (progressPay) {
-                            progressPay.classList.remove('completed');
-                            progressPay.classList.add('active');
-                        }
-
-                        const payCard = document.querySelector('.payment-card');
-                        if (payCard) {
-                            payCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            const focusTarget = payCard.querySelector('button, a, input');
-                            if (focusTarget) focusTarget.focus();
-                        }
-                    }
-                };
-
-                progressPay.addEventListener('click', goToStep1);
-                progressPay.addEventListener('keydown', (event) => {
-                    if (event.key === 'Enter' || event.key === ' ') {
-                        event.preventDefault();
-                        goToStep1();
-                    }
-                });
-            }
-
-            copyButton.addEventListener("click", async () => {
-                try {
-                    await copyToClipboard(upiId);
-                    copyButton.textContent = "Copied";
-                    copyStatus.textContent = "UPI ID copied to clipboard.";
-                    setTimeout(() => {
-                        copyButton.textContent = "Copy";
-                        copyStatus.textContent = "";
-                    }, 1500);
-                } catch (error) {
-                    copyStatus.textContent = "Unable to copy. Please copy manually.";
-                }
-            });
-
-            if (form) {
-                const submitBtn = form.querySelector('button[type="submit"]');
-
-                const emailRegexLocal = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-                function isFormValidNow() {
-                    const full = (document.getElementById('full-name') || { value: '' }).value.trim();
-                    const em = (document.getElementById('email-address') || { value: '' }).value.trim();
-                    const pay = (document.getElementById('payment-method') || { value: '' }).value;
-                    const tx = (document.getElementById('transaction-id') || { value: '' }).value.trim();
-                    return full && em && emailRegexLocal.test(em) && pay && tx;
-                }
-
-                function updateSubmitState() {
-                    if (!submitBtn) return;
-                    const valid = isFormValidNow();
-                    submitBtn.disabled = !valid;
-                    submitBtn.classList.toggle('btn-disabled', !valid);
-                    submitBtn.setAttribute('aria-disabled', (!valid).toString());
-                }
-
-                const inputFields = form.querySelectorAll(".payment-input, .payment-select");
-                inputFields.forEach((field) => {
-                    field.addEventListener("input", () => {
-                        const fld = field.closest(".field");
-                        if (fld) fld.classList.remove("is-error");
-                        updateSubmitState();
-                    });
-                    field.addEventListener("change", () => {
-                        const fld = field.closest(".field");
-                        if (fld) fld.classList.remove("is-error");
-                        updateSubmitState();
-                    });
-                });
-
-                // initialize
-                updateSubmitState();
-
-                form.addEventListener("submit", handleFormSubmit);
-            }
-        });
-    </script>
-
 </body>
 
 </html>
