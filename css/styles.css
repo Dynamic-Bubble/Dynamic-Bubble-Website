@@ -1174,7 +1174,7 @@ a:hover {
     align-items: stretch;
     gap: var(--spacing-lg);
     max-width: 1120px;
-    margin: 0 auto;
+    margin: 0 auto clamp(3rem, 6vw, 5rem);
 }
 
 #services-overview .services-overview-card {
@@ -1182,20 +1182,29 @@ a:hover {
     flex-direction: column;
     height: 100%;
     min-height: 350px;
-    padding-bottom: var(--spacing-2xl);
-}
-
-#services-overview .services-overview-card .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: auto;
-    align-self: flex-start;
-    min-height: 48px;
+    padding-bottom: var(--spacing-xl);
 }
 
 #services-overview .services-overview-card p {
-    margin-bottom: var(--spacing-xl);
+    flex: 1;
+    margin-bottom: 0;
+}
+
+#services-overview .services-overview-card .service-card-cta {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: auto;
+    padding-top: var(--spacing-md);
+}
+
+#services-overview .services-overview-card .service-card-cta .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    max-width: 100%;
+    min-height: 48px;
 }
 
 #services-overview .services-overview-card .btn span {
@@ -1204,7 +1213,8 @@ a:hover {
 }
 
 #web-development {
-    padding-top: calc(var(--spacing-3xl) * 1.5);
+    padding-top: var(--spacing-lg);
+    scroll-margin-top: 120px;
 }
 
 .business-services-heading {
@@ -1229,13 +1239,13 @@ a:hover {
         padding-bottom: var(--spacing-xl);
     }
 
-    #services-overview .services-overview-card .btn {
-        align-self: stretch;
+    #services-overview .services-overview-card .service-card-cta .btn {
+        align-self: center;
         justify-content: center;
     }
 
     #web-development {
-        padding-top: calc(var(--spacing-3xl) + var(--spacing-lg));
+        padding-top: var(--spacing-lg);
     }
 
     .business-services-heading {
