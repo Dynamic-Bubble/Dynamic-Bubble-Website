@@ -1217,6 +1217,51 @@ a:hover {
     scroll-margin-top: 120px;
 }
 
+#services .home-services-grid {
+    align-items: stretch;
+}
+
+#services .home-service-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#services .home-service-card p {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+#services .home-service-card .service-card-cta {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: auto;
+    padding-top: var(--spacing-md);
+}
+
+#services .home-service-card .service-card-cta .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    max-width: 100%;
+    min-height: 48px;
+}
+
+#services .home-service-card .btn span {
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+#services .services-section-divider {
+    margin: clamp(3rem, 6vw, 5rem) auto clamp(2rem, 4vw, 3rem);
+}
+
+#services .home-business-services-heading {
+    margin-bottom: var(--spacing-xl);
+}
+
 .business-services-heading {
     text-align: center;
     margin: 0 auto var(--spacing-2xl);
@@ -1246,6 +1291,19 @@ a:hover {
 
     #web-development {
         padding-top: var(--spacing-lg);
+    }
+
+    #services .home-service-card .service-card-cta .btn {
+        align-self: center;
+        justify-content: center;
+    }
+
+    #services .services-section-divider {
+        margin: clamp(2rem, 10vw, 3rem) auto var(--spacing-lg);
+    }
+
+    #services .home-business-services-heading {
+        margin-bottom: var(--spacing-lg);
     }
 
     .business-services-heading {
